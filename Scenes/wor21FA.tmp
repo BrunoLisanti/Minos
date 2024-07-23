@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce46v15i0rp3c"]
+
+[ext_resource type="Texture2D" uid="uid://bcdymvtxslqtp" path="res://Assets/Textures/earth-texture.jpg" id="1_x4bgu"]
+[ext_resource type="PackedScene" uid="uid://clwd2pt32yncv" path="res://Scenes/Player.tscn" id="2_dlf8a"]
+[ext_resource type="Script" path="res://Scripts/Fps.gd" id="3_oxjl2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n2ouw"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_iw7cl"]
+sky_material = SubResource("ProceduralSkyMaterial_n2ouw")
+
+[sub_resource type="Environment" id="Environment_gxxmx"]
+background_mode = 2
+sky = SubResource("Sky_iw7cl")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1j6c"]
+albedo_texture = ExtResource("1_x4bgu")
+uv1_triplanar = true
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gxxmx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.180725, 0)
+use_collision = true
+size = Vector3(70, 0.2, 70)
+material = SubResource("StandardMaterial3D_x1j6c")
+
+[node name="Player" parent="." instance=ExtResource("2_dlf8a")]
+
+[node name="Fps" type="Label" parent="."]
+offset_right = 165.0
+offset_bottom = 95.0
+text = "FPS"
+script = ExtResource("3_oxjl2")
