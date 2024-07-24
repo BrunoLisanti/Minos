@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d1lc5o3klhcd"]
+
+[node name="Obstacles" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+size = Vector3(5, 1, 1)
+
+[node name="Ramp" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -1.41421, 0, 0.707107, 1.41421, 0, 0.427299, 0.2799)
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1)
+size = Vector3(2, 1, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.249451, -1)
+size = Vector3(2, 1.4989, 1)

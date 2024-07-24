@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce46v15i0rp3c"]
+[gd_scene load_steps=9 format=3 uid="uid://ce46v15i0rp3c"]
 
 [ext_resource type="Texture2D" uid="uid://bcdymvtxslqtp" path="res://Assets/Textures/earth-texture.jpg" id="1_x4bgu"]
 [ext_resource type="PackedScene" uid="uid://clwd2pt32yncv" path="res://Scenes/Player.tscn" id="2_dlf8a"]
 [ext_resource type="Script" path="res://Scripts/Fps.gd" id="3_oxjl2"]
+[ext_resource type="PackedScene" uid="uid://d1lc5o3klhcd" path="res://Scenes/obstacles.tscn" id="4_yte3l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n2ouw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,3 +44,6 @@ offset_right = 165.0
 offset_bottom = 95.0
 text = "FPS"
 script = ExtResource("3_oxjl2")
+
+[node name="Obstacles" parent="." instance=ExtResource("4_yte3l")]
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 2.33364, 1.04347, -12.5239)
