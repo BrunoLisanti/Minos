@@ -2,10 +2,11 @@ extends RayCast3D
 
 var obj = null
 @onready var hold_position = $"../HoldPosition"
-@onready var head = $"../.."
+@onready var camera = $".."
+@onready var character = $"../.."
+
 
 func _process(delta):
-	
 	if Input.is_action_just_pressed("interact"):
 		if obj == null:
 			var collider = get_collider()
@@ -17,5 +18,5 @@ func _process(delta):
 
 	if obj != null:
 		obj.position = hold_position.global_position
-		obj.rotation = head.rotation
+		obj.rotation = character.rotation
 
