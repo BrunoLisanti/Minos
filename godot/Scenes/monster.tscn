@@ -1,16 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://deex24tw48bch"]
+[gd_scene load_steps=9 format=3 uid="uid://deex24tw48bch"]
 
-[ext_resource type="Script" path="res://Scripts/navigation.gd" id="1_0qnu6"]
+[ext_resource type="Script" path="res://Scripts/monster.gd" id="1_0qnu6"]
+[ext_resource type="Script" path="res://Scripts/fsm/fsm.gd" id="2_7afyk"]
+[ext_resource type="Script" path="res://Scripts/fsm/wander.gd" id="3_1valx"]
+[ext_resource type="Script" path="res://Scripts/fsm/chase.gd" id="4_17ksi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xumfw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b4fwr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23q8c"]
 albedo_color = Color(0.0827474, 0.906213, 1.50168e-05, 1)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_5gdwv"]
+
+[node name="Monster" type="CharacterBody3D"]
 script = ExtResource("1_0qnu6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_xumfw")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_b4fwr")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_23q8c")
+
+[node name="Face" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.8, 0, 1, 0.106)
+mesh = SubResource("BoxMesh_5gdwv")
+skeleton = NodePath("")
+
+[node name="FSM" type="Node" parent="."]
+script = ExtResource("2_7afyk")
+
+[node name="Wander" type="Node" parent="FSM"]
+script = ExtResource("3_1valx")
+
+[node name="Chase" type="Node" parent="FSM"]
+script = ExtResource("4_17ksi")
