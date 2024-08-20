@@ -15,23 +15,22 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="BoxMesh" id="BoxMesh_a1ruc"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7xfs"]
 size = Vector3(1.31934, 0.20752, 0.311157)
 
+[sub_resource type="BoxMesh" id="BoxMesh_a1ruc"]
+
 [node name="Cajon" type="RigidBody3D" groups=["pickable"]]
+collision_layer = 2
+collision_mask = 2
 lock_rotation = true
 continuous_cd = true
 script = SubResource("GDScript_dt05f")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00101, 0, 0, 0, 1.00101, 2.77836e-17, 0, 0, 1.00101, 0.00189126, 0.000244856, 6.10352e-05)
+shape = SubResource("BoxShape3D_l7xfs")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.3216, 0, 0, 0, 0.2, -1.16415e-10, 0, 0, 0.3, 0, 0, 0)
 mesh = SubResource("BoxMesh_a1ruc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00189126, 0.000244856, 6.10352e-05)
-shape = SubResource("BoxShape3D_l7xfs")
-
-[node name="CollisionFloor" type="RayCast3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.102972, 0)
