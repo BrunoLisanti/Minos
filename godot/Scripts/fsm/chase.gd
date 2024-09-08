@@ -13,7 +13,7 @@ func exit()->void:
 	print("Exited chase")
 
 func physics_process(delta)->void:
-	if monster.can_see(player, player.camera.position.y):
+	if monster.can_see(player, player.camera.position):
 		target = player.global_transform.origin
 		monster.set_path(target, false)
 	monster.follow_path(delta)
@@ -24,6 +24,6 @@ func check_conditions()->void:
 	if monster.global_transform.origin.distance_to(target) > monster.detection_radius:
 		fsm.change_state("Wander")
 		return
-	if !monster.can_see(player, player.camera.position.y) && monster.path.is_empty():
+	if !monster.can_see(player, player.camera.position) && monster.path.is_empty():
 		fsm.change_state("Wander")
 		return

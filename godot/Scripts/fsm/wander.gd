@@ -44,7 +44,7 @@ func physics_process(delta)->void:
 func check_conditions()->void:
 	if monster.global_position.distance_to(player.global_position) < monster.detection_radius: 
 		print("player in range")
-		if monster.can_see(player, player.camera.position.y):
+		if monster.can_see(player, player.camera.position):
 			fsm.change_state("Chase")
 		#var player_pointer: Vector3 = Vector3(player.global_position - monster.global_position).normalized()
 		#var cosine_of_angle_to_player: float = monster.basis.z.dot(player_pointer) # el producto escalar de dos vectores normalizados es igual al coseno del ángulo entre ellos.
