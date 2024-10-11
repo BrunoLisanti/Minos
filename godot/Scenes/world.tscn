@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://ce46v15i0rp3c"]
+[gd_scene load_steps=69 format=3 uid="uid://ce46v15i0rp3c"]
 
 [ext_resource type="Texture2D" uid="uid://bcdymvtxslqtp" path="res://textures/earth-texture.jpg" id="1_x4bgu"]
 [ext_resource type="PackedScene" uid="uid://clwd2pt32yncv" path="res://Scenes/Player.tscn" id="2_dlf8a"]
@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://b70dbh5v15xno" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger_solid_class.tres" id="21_g4t2p"]
 [ext_resource type="Resource" uid="uid://bu2f3lupsjhfp" path="res://addons/qodot/game_definitions/fgd/solid_classes/wall_solid_class.tres" id="22_78i12"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="23_4880h"]
+[ext_resource type="PackedScene" uid="uid://dg6nbktm8kp15" path="res://Scenes/Cajon.tscn" id="27_8pojm"]
 [ext_resource type="PackedScene" uid="uid://bwr2eqy7jf8uq" path="res://Scenes/maze.tscn" id="27_t3hot"]
 [ext_resource type="PackedScene" uid="uid://deex24tw48bch" path="res://Scenes/monster.tscn" id="28_6xni6"]
 
@@ -329,6 +330,10 @@ properties = {
 
 [node name="Maze" parent="." instance=ExtResource("27_t3hot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0152, 0, -16.4697)
+
+[node name="Cajon" parent="Maze" instance=ExtResource("27_8pojm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1435, -0.397183, 3.53471)
+script = null
 
 [node name="Monster" parent="Maze" instance=ExtResource("28_6xni6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5649, 0.00645924, 5.99507)

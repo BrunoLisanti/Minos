@@ -17,6 +17,6 @@ func _process(delta):
 			obj = null
 
 	if obj != null:
-		obj.position = hold_position.global_position
+		obj.global_position = hold_position.global_position
 		obj.rotation = character.rotation
 
