@@ -12,7 +12,7 @@ var t_bob = 0.0
 
 var gravity = 9.8
 
-@onready var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = $Camera
 
 #func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,7 +41,7 @@ func _physics_process(delta):
 		
 	# Get the input direction and handle the movement/deceleration.
 	# Movimiento en el eje Z de acuerdo a la dirección en la que se está mirando.
-	var input_dir = (1 if Input.is_action_pressed("down") else 0) - (1 if Input.is_action_pressed("up") else 0) # 1 si se presiona abajo, -1 si se presiona arriba. Cero si se presionan ambos.
+	var input_dir = (1 if Input.is_action_pressed("backward") else 0) - (1 if Input.is_action_pressed("forward") else 0) # 1 si se presiona abajo, -1 si se presiona arriba. Cero si se presionan ambos.
 	var direction = (transform.basis * Vector3(0, 0, input_dir)).normalized()
 	var current_speed = SPEED if input_dir == -1 else SPEED / 2
 	
