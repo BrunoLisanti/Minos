@@ -46,22 +46,22 @@ func follow_path(delta)->void:
 	move(destination, delta)
 
 func can_see(object: CollisionObject3D, offset: Vector3 = Vector3.ZERO)->bool:
-	var pointer: Vector3 = Vector3(object.global_position - global_position).normalized()
+	var pointer := Vector3(object.global_position - global_position).normalized()
 	var cosine_of_angle_to_player: float = basis.z.dot(pointer) # el producto escalar de dos vectores normalizados es igual al coseno del ángulo entre ellos.
 	if cosine_of_angle_to_player < cos(deg_to_rad(fov / 2)): return false
 	
 	# verificar si hay una pared entre ellos
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var raycast_query = PhysicsRayQueryParameters3D.create(head.global_position, object.global_position + offset)
-	raycast_query.exclude = [get_rid(), object.get_rid()] # TODO: se está excluyendo el "visor" (cara) del monstruo?
+	raycast_query.exclude = [get_rid(), object.get_rid()] # TODO: se está excluyendo el "visor" (cara) del monstruo? también considerar el cajón
 	
 	var collision: Dictionary = space.intersect_ray(raycast_query)
 	return collision.is_empty()
 
 func find_random_point(radius: float, pos: Vector3)->Vector3:
 	print("finding random point")
-	var x: float = randf_range(-radius, radius)
-	var z: float = randf_range(-radius, radius)
+	var x := randf_range(-radius, radius)
+	var z := randf_range(-radius, radius)
 	while (sqrt(x**2 + z**2) >= radius):
 		x = randf_range(-radius, radius)
 		z = randf_range(-radius, radius)

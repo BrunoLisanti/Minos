@@ -4,14 +4,14 @@ extends Node
 
 var buffer: Array[MeshInstance3D]
 
-func draw_path(p: PackedVector3Array, color = Color.WHITE_SMOKE)->void:
+func draw_path(path: PackedVector3Array, color := Color.WHITE_SMOKE)->void:
 	for mesh in buffer: # limpiar el dibujo anterior
 		if is_instance_valid(mesh):
 			mesh.queue_free()
-	for i in range(p.size() - 1):
-		buffer.append(await draw_line(p[i], p[i + 1], color))
+	for i in range(path.size() - 1):
+		buffer.append(await draw_line(path[i], path[i + 1], color))
 
-func draw_line(a: Vector3, b: Vector3, color = Color.WHITE_SMOKE, persist_ms = 0):
+func draw_line(a: Vector3, b: Vector3, color := Color.WHITE_SMOKE, persist_ms: float = 0):
 	var mesh_instance := MeshInstance3D.new()
 	var immediate_mesh := ImmediateMesh.new()
 	var material := ORMMaterial3D.new()

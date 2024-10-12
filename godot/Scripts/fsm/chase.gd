@@ -21,9 +21,6 @@ func physics_process(delta)->void:
 	super.physics_process(delta)
 	
 func check_conditions()->void:
-	if monster.global_transform.origin.distance_to(target) > monster.detection_radius:
-		fsm.change_state("Wander")
-		return
 	if !monster.can_see(player, player.camera.position) && monster.path.is_empty():
 		fsm.change_state("Wander")
 		return
