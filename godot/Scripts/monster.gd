@@ -16,13 +16,6 @@ var path: PackedVector3Array
 var path_index: int = 0
 const path_point_margin: float = 0.5 # margen de diferencia aceptable para poder decir que la entidad se encuentra en un punto determinado
 
-@onready var targets: Array[Vector3] = [
-	$"/root/World/Maze/NavigationRegion3D/Corner".global_transform.origin,
-	$"/root/World/Maze/NavigationRegion3D/DeadEnd".global_transform.origin,
-	$"/root/World/Maze/NavigationRegion3D/Room".global_transform.origin
-]
-var target_index: int = 0
-
 @onready var debug: Node = $"/root/World/Debug"
 
 func _ready():

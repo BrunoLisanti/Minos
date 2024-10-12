@@ -141,15 +141,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 11)
 use_collision = true
 size = Vector3(11, 3, 1)
 
-[node name="DeadEnd" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
-
-[node name="Room" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 34)
-
-[node name="Corner" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, 44)
-
 [node name="Floor" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Floor1" type="CSGBox3D" parent="NavigationRegion3D/Floor"]
