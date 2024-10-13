@@ -3,7 +3,7 @@ extends RayCast3D
 var obj = null
 @onready var hold_position = $"../HoldPosition"
 @onready var camera = $".."
-@onready var character = $"../.."
+@onready var character = $"../../.."
 
 
 func _process(delta):

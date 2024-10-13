@@ -3,9 +3,12 @@ extends CharacterBody3D
 # https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_using_navigationservers.html
 # https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_using_navigationpaths.html
 
-const speed: float = 120
+const wander_speed: float = 180
+const chase_speed: float = 200
 const detection_radius: float = 20.0
 const fov: int = 90
+
+var speed := wander_speed
 
 @onready var head: Node3D = $"Model/Face"
 @onready var maze: Node3D = $"/root/World/Maze"
@@ -58,11 +61,11 @@ func can_see(object: CollisionObject3D, offset: Vector3 = Vector3.ZERO)->bool:
 	var collision: Dictionary = space.intersect_ray(raycast_query)
 	return collision.is_empty()
 
-func find_random_point(radius: float, pos: Vector3)->Vector3:
+func find_random_point(radius: float, vicinity: Vector3)->Vector3:
 	print("finding random point")
 	var x := randf_range(-radius, radius)
 	var z := randf_range(-radius, radius)
 	while (sqrt(x**2 + z**2) >= radius):
 		x = randf_range(-radius, radius)
 		z = randf_range(-radius, radius)
-	return NavigationServer3D.map_get_closest_point(map, Vector3(pos.x + x, global_position.y, pos.z + z))
+	return NavigationServer3D.map_get_closest_point(map, Vector3(vicinity.x + x, global_position.y, vicinity.z + z))
