@@ -7,7 +7,8 @@ const SENSITIVITY := 0.030
 
 #bob variables
 const BOB_FREQ := 3.4
-const BOB_AMP := 0.01
+const BOB_AMP_HORIZONTAL := 0.01
+const BOB_AMP_VERTICAL := 0.005
 var t_bob := 0.0
 
 var gravity := 9.8
@@ -42,7 +43,7 @@ func _physics_process(delta):
 	
 	# head bobbing
 	t_bob += speed * delta # acumulador de tiempo usado como oscilador, y teniendo en cuenta la velocidad (?)
-	var bob := Vector3(cos(t_bob * BOB_FREQ / 1.8) * BOB_AMP, sin(t_bob * BOB_FREQ) * BOB_AMP, 0)
+	var bob := Vector3(cos(t_bob * BOB_FREQ / 1.8) * BOB_AMP_HORIZONTAL, sin(t_bob * BOB_FREQ) * BOB_AMP_VERTICAL, 0)
 	camera.transform.origin = bob if walking else lerp(camera.transform.origin, Vector3.ZERO, .1)
 	
 	move_and_slide()
