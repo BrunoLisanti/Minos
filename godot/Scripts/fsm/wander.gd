@@ -1,8 +1,6 @@
 extends State
 
-@onready var fsm: FSM = $"../../FSM"
-@onready var monster: CharacterBody3D = $"/root/World/Maze/Monster"
-@onready var player: Node3D = $"/root/World/Maze/Player"
+#@onready var fsm: FSM = get_parent()
 
 const min_idle_time: float = 2
 const max_idle_time: float = 6
@@ -15,7 +13,11 @@ var behaviour_duration: float
 var time_behaving: float # tiempo que estuvo quieto o moviéndose
 var time_aware: float # tiempo que tuvo al jugador en su visión
 
+var monster: CharacterBody3D
+var player: CharacterBody3D
 func enter()->void:
+	monster = fsm.agent
+	player = monster.prey
 	behaviour_duration = randf_range(min_idle_time, max_idle_time)
 	time_behaving = 0
 	time_aware = 0

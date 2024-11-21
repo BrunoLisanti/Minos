@@ -2,6 +2,8 @@ extends Node
 
 class_name State
 
+@onready var fsm: FSM = get_parent()
+
 func enter()->void:
 	pass
 	
