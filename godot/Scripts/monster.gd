@@ -18,6 +18,7 @@ var speed := wander_speed
 var path: PackedVector3Array
 var path_index: int = 0
 const path_point_margin: float = 0.5 # margen de diferencia aceptable para poder decir que la entidad se encuentra en un punto determinado
+var knows_your_position: bool = false
 
 @onready var debug: Node = $"/root/World/Debug"
 
@@ -37,6 +38,8 @@ func set_path(to: Vector3, restrictive: bool = true)->void:
 
 func follow_path(delta)->void:
 	var start: Vector3 = global_transform.origin
+	print("El path: ", path)
+	print("El path_index: ", path_index)
 	var destination: Vector3 = path[path_index]
 	if start.distance_to(destination) <= path_point_margin:
 		path_index += 1
@@ -69,3 +72,8 @@ func find_random_point(radius: float, vicinity: Vector3)->Vector3:
 		x = randf_range(-radius, radius)
 		z = randf_range(-radius, radius)
 	return NavigationServer3D.map_get_closest_point(map, Vector3(vicinity.x + x, global_position.y, vicinity.z + z))
+
+
+func _on_memory_timeout():
+	print("Se le acabo el tiempo vo !")
+	knows_your_position = false

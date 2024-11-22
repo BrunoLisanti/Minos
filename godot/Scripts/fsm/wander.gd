@@ -16,6 +16,7 @@ var time_behaving: float # tiempo que estuvo quieto o moviéndose
 var time_aware: float # tiempo que tuvo al jugador en su visión
 
 func enter()->void:
+	monster.knows_your_position = false
 	behaviour_duration = randf_range(min_idle_time, max_idle_time)
 	time_behaving = 0
 	time_aware = 0
