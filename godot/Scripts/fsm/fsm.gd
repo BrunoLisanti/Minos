@@ -6,10 +6,10 @@ var states: Dictionary
 var state: State
 
 @export var entry_state: String = "Wander"
-@onready var monster: CharacterBody3D = $"/root/World/Maze/Monster"
-@onready var player: CharacterBody3D = $"/root/World/Maze/Player"
+var agent: Node
 
 func _ready()->void:
+	agent = get_parent()
 	for state: State in get_children():
 		states[state.name] = state
 	change_state(entry_state)

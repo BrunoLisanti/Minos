@@ -11,16 +11,16 @@ const fov: int = 90
 var speed := wander_speed
 
 @onready var head: Node3D = $"Model/Face"
-@onready var maze: Node3D = $"/root/World/Maze"
 
-@onready var navigation: NavigationRegion3D = $"/root/World/Maze/NavigationRegion3D"
+@export var navigation: NavigationRegion3D #= $"/root/World/Maze/NavigationRegion3D"
 @onready var map: RID = navigation.get_navigation_map()
 var path: PackedVector3Array
 var path_index: int = 0
 const path_point_margin: float = 0.5 # margen de diferencia aceptable para poder decir que la entidad se encuentra en un punto determinado
 var knows_your_position: bool = false
 
-@onready var debug: Node = $"/root/World/Debug"
+@export var prey: Node
+@export var debug: Node
 
 func _ready():
 	randomize()
@@ -33,7 +33,7 @@ func move(where: Vector3, delta)->void:
 func set_path(to: Vector3, restrictive: bool = true)->void:
 	path = NavigationServer3D.map_get_path(map, global_transform.origin, to, !restrictive) # se supone que al usar restrictive se va a mover exclusivamente por el medio de los pasillos. no debería ser el caso cuando está persiguiendo al jugador.
 	path_index = 0
-	if OS.is_debug_build():
+	if OS.is_debug_build() and debug != null:
 		debug.draw_path(path, Color.BLUE)
 
 func follow_path(delta)->void:

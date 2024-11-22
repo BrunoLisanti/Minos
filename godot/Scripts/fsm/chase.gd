@@ -1,16 +1,16 @@
 extends State
 
-@onready var fsm: FSM = $"../../FSM"
-
-@onready var monster: CharacterBody3D = $"/root/World/Maze/Monster"
-@onready var player: Node3D = $"/root/World/Maze/Player"
-@onready var memory = $"../../Memory"
+var monster: CharacterBody3D
+var player: CharacterBody3D
+var memory: Timer
 var target: Vector3
 
 
 func enter()->void:
 	print("Entered chase")
 	monster.knows_your_position = true
+	monster = fsm.agent
+	player = monster.prey
 	monster.speed = monster.chase_speed
 	
 func exit()->void:
