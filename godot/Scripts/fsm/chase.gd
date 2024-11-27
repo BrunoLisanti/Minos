@@ -8,9 +8,10 @@ var target: Vector3
 
 func enter()->void:
 	print("Entered chase")
-	monster.knows_your_position = true
 	monster = fsm.agent
 	player = monster.prey
+	memory = monster.get_node("Memory")
+	monster.knows_your_position = true
 	monster.speed = monster.chase_speed
 	
 func exit()->void:
