@@ -6,7 +6,7 @@ extends CharacterBody3D
 const wander_speed: float = 180
 const chase_speed: float = 200
 const detection_radius: float = 20.0
-const fov: int = 90
+const fov: float = 90
 
 var speed := wander_speed
 
