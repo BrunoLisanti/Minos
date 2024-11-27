@@ -10,8 +10,8 @@ var agent: Node
 
 func _ready()->void:
 	agent = get_parent()
-	for state: State in get_children():
-		states[state.name] = state
+	for s: State in get_children():
+		states[s.name] = s
 	change_state(entry_state)
 
 func change_state(to: String)->void:

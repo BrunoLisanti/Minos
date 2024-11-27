@@ -10,10 +10,10 @@ func enter()->void:
 func exit()->void:
 	pass
 	
-func process(delta: float)->void:
+func process(_delta: float)->void:
 	check_conditions()
 
-func physics_process(delta: float)->void:
+func physics_process(_delta: float)->void:
 	check_conditions()
 
 func check_conditions()->void:

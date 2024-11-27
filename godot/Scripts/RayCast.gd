@@ -6,7 +6,7 @@ var obj = null
 @onready var character = $"../../.."
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		if obj == null:
 			var collider = get_collider()
@@ -19,4 +19,3 @@ func _process(delta):
 	if obj != null:
 		obj.global_position = hold_position.global_position
 		obj.rotation = character.rotation
-
