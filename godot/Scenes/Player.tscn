@@ -108,6 +108,7 @@ bus = &"Player Footsteps"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
+current = true
 
 [node name="RayCast" type="RayCast3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, -9.28644e-08, -1, 0, 2.12449, -4.37114e-08, -0.000199318, -1.3568, 0.000105858)
@@ -116,3 +117,6 @@ script = ExtResource("2_m3vyn")
 
 [node name="HoldPosition" type="Node3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.515628, -0.892867)
+
+[node name="TopCamera" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)

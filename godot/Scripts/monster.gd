@@ -28,7 +28,10 @@ func _ready():
 func move(where: Vector3, delta)->void:
 	velocity = global_position.direction_to(where) * speed * delta
 	move_and_slide()
-	look_at(where, Vector3.UP, true)
+	
+	# Mirar hacia esa dirección
+	var angle: float = Vector2(global_transform.origin.z, global_transform.origin.x).angle_to_point(Vector2(where.z, where.x))
+	set_rotation(Vector3(0, angle, 0))
 	
 func set_path(to: Vector3, restrictive: bool = true)->void:
 	path = NavigationServer3D.map_get_path(map, global_transform.origin, to, !restrictive) # se supone que al usar restrictive se va a mover exclusivamente por el medio de los pasillos. no debería ser el caso cuando está persiguiendo al jugador.
@@ -38,8 +41,6 @@ func set_path(to: Vector3, restrictive: bool = true)->void:
 
 func follow_path(delta)->void:
 	var start: Vector3 = global_transform.origin
-	print("El path: ", path)
-	print("El path_index: ", path_index)
 	var destination: Vector3 = path[path_index]
 	if start.distance_to(destination) <= path_point_margin:
 		path_index += 1
