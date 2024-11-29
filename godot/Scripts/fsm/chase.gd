@@ -17,7 +17,7 @@ func enter()->void:
 func exit()->void:
 	print("Exited chase")
 
-func physics_process(delta)->void:	
+func physics_process(delta)->void:
 	if monster.knows_your_position:
 		target = player.global_transform.origin
 		monster.set_path(target, false)
@@ -26,17 +26,15 @@ func physics_process(delta)->void:
 	super.physics_process(delta)
 
 func check_conditions()->void:
+	print(memory.time_left)
 	if monster.can_see(player, player.head.position):
-		#print("Te esta viendo wachin")
-		if !memory.is_stopped():
-			memory.stop()
+		monster.knows_your_position = true
+		memory.stop()
 
 	if !monster.can_see(player, player.head.position) && monster.knows_your_position:
-		#print("No ve pero recuerda")
 		if memory.is_stopped():
 			memory.start(3)
 	
 	if !monster.knows_your_position && monster.path.is_empty():
-		#print("Se perdio al monstruo...")
 		fsm.change_state("Wander")
 		return
