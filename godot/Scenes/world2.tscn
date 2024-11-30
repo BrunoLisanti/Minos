@@ -17,7 +17,7 @@ navigation_mesh = SubResource("NavigationMesh_1ls4a")
 [node name="Map" parent="NavigationRegion3D" instance=ExtResource("1_4nc5b")]
 
 [node name="Player" parent="." instance=ExtResource("2_1vgft")]
-transform = Transform3D(-1, 0, 2.62269e-07, 0, 1, 0, -2.62269e-07, 0, -1, 12.5359, 1, 2.54344)
+transform = Transform3D(-1, 0, 2.62269e-07, 0, 1, 0, -2.62269e-07, 0, -1, 11.1695, 1.01687, -0.187625)
 
 [node name="Monster" parent="." node_paths=PackedStringArray("navigation", "prey", "debug") instance=ExtResource("3_ws8mf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2006, 1.50923, 3.40052)

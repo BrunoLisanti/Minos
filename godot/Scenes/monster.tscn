@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://deex24tw48bch"]
+[gd_scene load_steps=11 format=3 uid="uid://deex24tw48bch"]
 
 [ext_resource type="Script" path="res://Scripts/monster.gd" id="1_0qnu6"]
 [ext_resource type="Script" path="res://Scripts/fsm/fsm.gd" id="2_7afyk"]
 [ext_resource type="Script" path="res://Scripts/fsm/wander.gd" id="3_1valx"]
 [ext_resource type="Script" path="res://Scripts/fsm/chase.gd" id="4_17ksi"]
+[ext_resource type="Script" path="res://Scripts/movement_component.gd" id="5_jbs1g"]
+[ext_resource type="Script" path="res://Scripts/pathfinding_component.gd" id="6_3qcos"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xumfw"]
 
@@ -46,5 +48,13 @@ script = ExtResource("4_17ksi")
 [node name="Memory" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("5_jbs1g")
+body = NodePath("..")
+
+[node name="PathfindingComponent" type="Node" parent="." node_paths=PackedStringArray("agent")]
+script = ExtResource("6_3qcos")
+agent = NodePath("..")
 
 [connection signal="timeout" from="Memory" to="." method="_on_memory_timeout"]

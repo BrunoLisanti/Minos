@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://clwd2pt32yncv"]
+[gd_scene load_steps=23 format=3 uid="uid://clwd2pt32yncv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3b6d0"]
 [ext_resource type="Script" path="res://Scripts/RayCast.gd" id="2_m3vyn"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cojyybspgc7vo" path="res://sound/player/footsteps/footstep-14.wav" id="17_rv7eb"]
 [ext_resource type="AudioStream" uid="uid://bdt1y3jmcouwp" path="res://sound/player/footsteps/footstep-15.wav" id="18_pdj6d"]
 [ext_resource type="AudioStream" uid="uid://3smgdwu15dt8" path="res://sound/player/footsteps/footstep-16.wav" id="19_4pbte"]
+[ext_resource type="Script" path="res://Scripts/movement_component.gd" id="20_0lofs"]
 [ext_resource type="AudioStream" uid="uid://c2u366qvrse6p" path="res://sound/player/footsteps/footstep-17.wav" id="20_otevg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mraqt"]
@@ -120,3 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.515628, -0.892867)
 
 [node name="TopCamera" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 12, 0)
+
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("20_0lofs")
+body = NodePath("..")

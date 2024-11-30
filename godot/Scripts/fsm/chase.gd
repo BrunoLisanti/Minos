@@ -20,8 +20,8 @@ func exit()->void:
 func physics_process(delta)->void:
 	if monster.knows_your_position:
 		target = player.global_transform.origin
-		monster.set_path(target, false)
-	monster.follow_path(delta)
+		monster.pathfinding_component.set_path(target, false)
+	monster.move_towards(monster.pathfinding_component.get_next_point(), delta)
 	
 	super.physics_process(delta)
 
@@ -35,6 +35,6 @@ func check_conditions()->void:
 		if memory.is_stopped():
 			memory.start(3)
 	
-	if !monster.knows_your_position && monster.path.is_empty():
+	if !monster.knows_your_position && monster.pathfinding_component.path.is_empty():
 		fsm.change_state("Wander")
 		return

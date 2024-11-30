@@ -29,11 +29,11 @@ func physics_process(delta)->void:
 		change_behaviour(!idle)
 		
 	if !idle:
-		if !monster.path.is_empty():
-			monster.follow_path(delta)
+		if !monster.pathfinding_component.path.is_empty(): #if !monster.path.is_empty():
+			monster.move_towards(monster.pathfinding_component.get_next_point(), delta) #move_towards(destination, delta)
 		else:
 			change_behaviour(true)
-			monster.set_path(monster.find_random_point(32, player.global_position))
+			monster.pathfinding_component.set_path(monster.pathfinding_component.get_random_point(32, player.global_position)) #monster.set_path(monster.find_random_point(32, player.global_position))
 			
 	if monster.global_position.distance_to(player.global_position) < monster.detection_radius && monster.can_see(player, player.head.position):
 		time_aware += delta
