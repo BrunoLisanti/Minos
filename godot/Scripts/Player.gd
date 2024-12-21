@@ -15,9 +15,32 @@ var step_time: float = 0
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera
+@onready var box_object: Node3D = null
+@onready var viewmodel_camera: Camera3D = $Control/BoxViewportContainer/SubViewport/BoxCamera
+@onready var box_viewmodel: MeshInstance3D = $BoxViewmodel
 @onready var footsteps_pool: Node = $FootstepsPool
+@onready var floor_raycast: RayCast3D = $FloorRaycast
 
 @onready var movement_component: MovementComponent = $MovementComponent
+
+func _process(_delta):
+	viewmodel_camera.global_transform = camera.global_transform
+	
+	if Input.is_action_just_pressed("interact"):
+		if box_object == null:
+			# pick up
+			var object := floor_raycast.get_collider()
+			if object != null && object.is_in_group("pickable"):
+				box_object = object
+				box_object.visible = false
+				box_viewmodel.visible = true
+		else:
+			# drop
+			box_object.global_position = global_position + Vector3.UP + -transform.basis.z
+			box_object.rotation = rotation
+			box_object.visible = true
+			box_object = null
+			box_viewmodel.visible = false;
 
 func _physics_process(delta):	
 	var y_rotation := (1 if Input.is_action_pressed("rotate_left") else 0) - (1 if Input.is_action_pressed("rotate_right") else 0) # 0, 1 o -1 de acuerdo a qué teclas estén apretadas.
