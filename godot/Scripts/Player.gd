@@ -48,7 +48,8 @@ func _physics_process(delta):
 	
 	var z_direction := (1 if Input.is_action_pressed("backward") else 0) - (1 if Input.is_action_pressed("forward") else 0)
 	var direction := Vector3(0, 0, z_direction)
-	var speed := SPEED if direction == Vector3.FORWARD else SPEED / 2
+	var speed := SPEED if box_object == null else SPEED / 1.5
+	speed = speed if direction == Vector3.FORWARD else speed / 2
 	
 	var hovering := not is_on_floor()
 	var walking := !hovering && direction
