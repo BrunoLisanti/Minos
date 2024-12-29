@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://clwd2pt32yncv"]
+[gd_scene load_steps=25 format=3 uid="uid://clwd2pt32yncv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3b6d0"]
 [ext_resource type="PackedScene" uid="uid://ragpw1u7o272" path="res://Scenes/SoundPool.tscn" id="3_5wyd6"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bdt1y3jmcouwp" path="res://sound/player/footsteps/footstep-15.wav" id="18_pdj6d"]
 [ext_resource type="AudioStream" uid="uid://3smgdwu15dt8" path="res://sound/player/footsteps/footstep-16.wav" id="19_4pbte"]
 [ext_resource type="Script" path="res://Scripts/movement_component.gd" id="20_0lofs"]
+[ext_resource type="PackedScene" uid="uid://dkrit1or0dx6l" path="res://Scenes/BoxViewmodel.tscn" id="20_nane8"]
 [ext_resource type="AudioStream" uid="uid://c2u366qvrse6p" path="res://sound/player/footsteps/footstep-17.wav" id="20_otevg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mraqt"]
@@ -125,7 +126,7 @@ bus = &"Player Footsteps"
 script = ExtResource("20_0lofs")
 body = NodePath("..")
 
-[node name="BoxViewmodel" type="MeshInstance3D" parent="."]
+[node name="BoxViewmodel_bkp" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.3216, -2.42648e-24, 5.24539e-08, 0, 0.2, -1.16415e-10, -2.31077e-07, -1.11022e-17, 0.3, -1.25669e-07, 1.09573, -0.572153)
 visible = false
 layers = 524288
@@ -169,6 +170,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62269e-07, 0, -1)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 shape = SubResource("BoxShape3D_gtlu7")
+
+[node name="BoxViewmodel" parent="." instance=ExtResource("20_nane8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.096, -0.572)
+visible = false
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_body_detection"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

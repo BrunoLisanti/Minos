@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # Movimiento
 const SPEED := 4.0
-const SENSITIVITY := 0.030
+const SENSITIVITY: float = 2.2
 
 # Head bobbing
 const BOB_FREQ := 3.4
@@ -17,7 +17,7 @@ var step_time: float = 0
 @onready var camera: Camera3D = $Head/Camera
 @onready var box: Resource = preload("res://Scenes/Cajon.tscn")
 @onready var viewmodel_camera: Camera3D = $Control/BoxViewportContainer/SubViewport/BoxCamera
-@onready var box_viewmodel: MeshInstance3D = $BoxViewmodel
+@onready var box_viewmodel: Node3D = $BoxViewmodel
 @onready var footsteps_pool: Node = $FootstepsPool
 @onready var floor_raycast: RayCast3D = $FloorRaycast
 @onready var interaction_range: Area3D = $InteractionArea
@@ -48,7 +48,7 @@ func _process(_delta):
 
 func _physics_process(delta):	
 	var y_rotation := (1 if Input.is_action_pressed("rotate_left") else 0) - (1 if Input.is_action_pressed("rotate_right") else 0) # 0, 1 o -1 de acuerdo a qué teclas estén apretadas.
-	rotate_y(y_rotation * SENSITIVITY)
+	rotate_y(y_rotation * SENSITIVITY * delta)
 	
 	var z_direction := (1 if Input.is_action_pressed("backward") else 0) - (1 if Input.is_action_pressed("forward") else 0)
 	var direction := Vector3(0, 0, z_direction)
@@ -75,3 +75,4 @@ func _physics_process(delta):
 func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
 		body.queue_free()
+		box_viewmodel.remove_flower()
