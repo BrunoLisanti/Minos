@@ -19,13 +19,12 @@ navigation_mesh = SubResource("NavigationMesh_1ls4a")
 [node name="Map" parent="NavigationRegion3D" instance=ExtResource("1_4nc5b")]
 
 [node name="Player" parent="." instance=ExtResource("2_1vgft")]
-transform = Transform3D(-1, 0, 2.62269e-07, 0, 1, 0, -2.62269e-07, 0, -1, 11.1695, 1.01687, -0.187625)
+transform = Transform3D(-1, 0, 2.62269e-07, 0, 1, 0, -2.62269e-07, 0, -1, 17.0633, 1.01687, -6.33322)
 
-[node name="Monster" parent="." node_paths=PackedStringArray("navigation", "prey", "debug") instance=ExtResource("3_ws8mf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2006, 1.50923, 3.40052)
+[node name="Monster" parent="." node_paths=PackedStringArray("navigation", "prey") instance=ExtResource("3_ws8mf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6304, 1.50923, 0.870848)
 navigation = NodePath("../NavigationRegion3D")
 prey = NodePath("../Player")
-debug = NodePath("../Debug")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999942, -0.00597998, -0.00893445, 0.010751, 0.556191, 0.830985, -1.11006e-08, -0.831033, 0.556223, 0, 0, 0)
@@ -33,19 +32,25 @@ transform = Transform3D(0.999942, -0.00597998, -0.00893445, 0.010751, 0.556191, 
 [node name="Debug" parent="." instance=ExtResource("4_2hlg5")]
 
 [node name="Cajon" parent="." instance=ExtResource("5_5npxw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0457, 1.10411, 5.99301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.105, 1.10411, -0.0219884)
 
 [node name="Objective" parent="." instance=ExtResource("6_rnlde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, -18)
 
 [node name="Objective2" parent="." instance=ExtResource("6_rnlde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, -2)
 
+[node name="Objective8" parent="." instance=ExtResource("6_rnlde")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -10, 1, 1)
+
 [node name="Objective3" parent="." instance=ExtResource("6_rnlde")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 1, 22)
 
+[node name="Objective7" parent="." instance=ExtResource("6_rnlde")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16, 1, 22)
+
 [node name="Objective4" parent="." instance=ExtResource("6_rnlde")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 34, 1, 31)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 1, 32)
 
 [node name="Objective5" parent="." instance=ExtResource("6_rnlde")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44, 1, 1)

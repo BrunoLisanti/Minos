@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://deex24tw48bch"]
+[gd_scene load_steps=14 format=3 uid="uid://deex24tw48bch"]
 
 [ext_resource type="Script" path="res://Scripts/monster.gd" id="1_0qnu6"]
 [ext_resource type="Script" path="res://Scripts/fsm/fsm.gd" id="2_7afyk"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/fsm/chase.gd" id="4_17ksi"]
 [ext_resource type="Script" path="res://Scripts/movement_component.gd" id="5_jbs1g"]
 [ext_resource type="Script" path="res://Scripts/pathfinding_component.gd" id="6_3qcos"]
+[ext_resource type="AudioStream" uid="uid://ctpeoahh5w6sb" path="res://sound/monster/danger.wav" id="7_8tjap"]
+[ext_resource type="AudioStream" uid="uid://jhrsc00ghtoi" path="res://sound/monster/run.mp3" id="8_25pyv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xumfw"]
 
@@ -16,7 +18,11 @@ albedo_color = Color(0.0827474, 0.906213, 1.50168e-05, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5gdwv"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdhpt"]
+size = Vector3(1, 2, 0.5)
+
 [node name="Monster" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_0qnu6")
@@ -59,4 +65,21 @@ body = NodePath("..")
 script = ExtResource("6_3qcos")
 agent = NodePath("..")
 
+[node name="KillArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
+shape = SubResource("BoxShape3D_wdhpt")
+
+[node name="Danger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8tjap")
+
+[node name="Run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_25pyv")
+volume_db = -6.559
+
 [connection signal="timeout" from="Memory" to="." method="_on_memory_timeout"]
+[connection signal="area_entered" from="KillArea" to="." method="_on_kill_area_entered"]
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]

@@ -74,5 +74,6 @@ func _physics_process(delta):
 
 func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
-		body.queue_free()
+		body.call_deferred("queue_free")
 		box_viewmodel.remove_flower()
+		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()

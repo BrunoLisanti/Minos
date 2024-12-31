@@ -33,7 +33,7 @@ size = Vector3(1.5, 1, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, 2.62269e-07, 0, 1, 0, -2.62269e-07, 0, -1, 0, 0, 0)
-collision_layer = 2
+collision_layer = 130
 collision_mask = 2
 script = ExtResource("1_3b6d0")
 

@@ -7,6 +7,7 @@ const max_idle_time: float = 6
 const min_wander_time: float = 6
 const max_wander_time: float = 10
 const detection_window: float = .5 # tiempo en que tarda en detectar al jugador una vez que entra en su campo de visión
+const stalk_radius: float = 25
 
 var idle := true
 var behaviour_duration: float
@@ -33,7 +34,7 @@ func physics_process(delta)->void:
 			monster.move_towards(monster.pathfinding_component.get_next_point(), delta) #move_towards(destination, delta)
 		else:
 			change_behaviour(true)
-			monster.pathfinding_component.set_path(monster.pathfinding_component.get_random_point(32, player.global_position)) #monster.set_path(monster.find_random_point(32, player.global_position))
+			monster.pathfinding_component.set_path(monster.pathfinding_component.get_random_point(stalk_radius, player.global_position)) #monster.set_path(monster.find_random_point(32, player.global_position))
 			
 	if monster.global_position.distance_to(player.global_position) < monster.detection_radius && monster.can_see(player, player.head.position):
 		time_aware += delta

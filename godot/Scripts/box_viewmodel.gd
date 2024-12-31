@@ -10,3 +10,6 @@ func remove_flower()->void:
 	if (remaining == 0): return
 	flowers.get_children()[0].queue_free()
 	remaining -= 1
+
+func get_remaining()->int:
+	return remaining

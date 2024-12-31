@@ -5,6 +5,7 @@ var player: CharacterBody3D
 var memory: Timer
 var target: Vector3
 
+@onready var run: AudioStreamPlayer = $"../../Run"
 
 func enter()->void:
 	print("Entered chase")
@@ -13,9 +14,10 @@ func enter()->void:
 	memory = monster.get_node("Memory")
 	monster.knows_your_position = true
 	monster.speed = monster.chase_speed
+	run.play()
 	
 func exit()->void:
-	print("Exited chase")
+	pass #print("Exited chase")
 
 func physics_process(delta)->void:
 	if monster.knows_your_position:
@@ -26,7 +28,6 @@ func physics_process(delta)->void:
 	super.physics_process(delta)
 
 func check_conditions()->void:
-	print(memory.time_left)
 	if monster.can_see(player, player.head.position):
 		monster.knows_your_position = true
 		memory.stop()
@@ -36,5 +37,6 @@ func check_conditions()->void:
 			memory.start(3)
 	
 	if !monster.knows_your_position && monster.pathfinding_component.path.is_empty():
+		run.stop()
 		fsm.change_state("Wander")
 		return

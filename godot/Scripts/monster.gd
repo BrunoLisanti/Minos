@@ -1,16 +1,19 @@
 extends CharacterBody3D
 
-const wander_speed: float = 3
-const chase_speed: float = 3.5
+const wander_speed: float = 3.8
+const chase_speed: float = 3.8
 const detection_radius: float = 20.0
 const fov: float = 90
 var knows_your_position: bool = false
+const min_sound_distance: float = 18 # A partir de qué distancia se empieza a escuchar el ruido
+const max_sound_distance: float = 4 # Punto en el que el ruido es más fuerte
 
 var speed := wander_speed
 
 @onready var head: Node3D = $"Model/Face"
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var pathfinding_component: PathfindingComponent = $PathfindingComponent
+@onready var danger: AudioStreamPlayer = $Danger
 
 @export var navigation: NavigationRegion3D
 @export var prey: Node
@@ -19,6 +22,12 @@ var speed := wander_speed
 func _ready():
 	randomize()
 	pathfinding_component.init(navigation, debug)
+	danger.volume_db = 0
+	danger.play()
+
+func _process(_delta: float)->void:
+	var distance_to_player: float = global_position.distance_to(prey.global_position)
+	danger.volume_db = linear_to_db(clamp(remap(distance_to_player, min_sound_distance, max_sound_distance, 0, 1), 0, 1))
 
 func move_towards(where: Vector3, delta: float)->void:
 	movement_component.move(position.direction_to(where), speed, 8, false, delta)
@@ -41,5 +50,8 @@ func can_see(object: CollisionObject3D, offset: Vector3 = Vector3.ZERO)->bool:
 	return collision.is_empty()
 
 func _on_memory_timeout():
-	print("Se le acabo el tiempo vo !")
+	#print("Se le acabo el tiempo vo !")
 	knows_your_position = false
+
+func _on_kill_area_body_entered(_body: Node3D) -> void:
+	get_tree().reload_current_scene()
