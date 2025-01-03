@@ -11,7 +11,7 @@ func draw_path(path: PackedVector3Array, color := Color.WHITE_SMOKE)->void:
 	for i in range(path.size() - 1):
 		buffer.append(await draw_line(path[i], path[i + 1], color))
 
-func draw_line(a: Vector3, b: Vector3, color := Color.WHITE_SMOKE, persist_ms: float = 0):
+func draw_line(a: Vector3, b: Vector3, color := Color.WHITE_SMOKE, persist_s: float = 0):
 	var mesh_instance := MeshInstance3D.new()
 	var immediate_mesh := ImmediateMesh.new()
 	var material := ORMMaterial3D.new()
@@ -27,18 +27,18 @@ func draw_line(a: Vector3, b: Vector3, color := Color.WHITE_SMOKE, persist_ms: f
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	material.albedo_color = color
 
-	return await final_cleanup(mesh_instance, persist_ms)
+	return await final_cleanup(mesh_instance, persist_s)
 
 ## 1 -> Lasts ONLY for current physics frame
 ## >1 -> Lasts X time duration.
 ## <1 -> Stays indefinitely
-func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
+func final_cleanup(mesh_instance: MeshInstance3D, persist_s: float):
 	get_tree().get_root().add_child(mesh_instance)
-	if persist_ms == 1:
+	if persist_s == 1:
 		await get_tree().physics_frame
 		mesh_instance.queue_free()
-	elif persist_ms > 0:
-		await get_tree().create_timer(persist_ms).timeout
+	elif persist_s > 0:
+		await get_tree().create_timer(persist_s).timeout
 		mesh_instance.queue_free()
 	else:
 		return mesh_instance

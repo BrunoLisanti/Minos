@@ -3,11 +3,11 @@ extends State
 #@onready var fsm: FSM = get_parent()
 
 const min_idle_time: float = 2
-const max_idle_time: float = 6
+const max_idle_time: float = 4
 const min_wander_time: float = 6
 const max_wander_time: float = 10
-const detection_window: float = .5 # tiempo en que tarda en detectar al jugador una vez que entra en su campo de visión
-const stalk_radius: float = 25
+const detection_window: float = .25 # tiempo en que tarda en detectar al jugador una vez que entra en su campo de visión
+const stalk_radius: float = 25 # radio alrededor del jugador en que busca el próximo punto a moverse
 
 var idle := true
 var behaviour_duration: float
@@ -30,13 +30,13 @@ func physics_process(delta)->void:
 		change_behaviour(!idle)
 		
 	if !idle:
-		if !monster.pathfinding_component.path.is_empty(): #if !monster.path.is_empty():
-			monster.move_towards(monster.pathfinding_component.get_next_point(), delta) #move_towards(destination, delta)
+		if !monster.pathfinding_component.path.is_empty():
+			monster.move_towards(monster.pathfinding_component.get_next_point(), delta)
 		else:
 			change_behaviour(true)
-			monster.pathfinding_component.set_path(monster.pathfinding_component.get_random_point(stalk_radius, player.global_position)) #monster.set_path(monster.find_random_point(32, player.global_position))
+			monster.pathfinding_component.set_path(monster.pathfinding_component.get_random_point(stalk_radius, player.global_position))
 			
-	if monster.global_position.distance_to(player.global_position) < monster.detection_radius && monster.can_see(player, player.head.position):
+	if monster.global_position.distance_to(player.global_position) < monster.detection_radius && monster.can_see(player, Vector3(0, player.head.position.y, 0)):
 		time_aware += delta
 	else:
 		time_aware = 0
