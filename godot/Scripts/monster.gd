@@ -3,7 +3,7 @@ extends CharacterBody3D
 const wander_speed: float = 3.8
 const chase_speed: float = 3.8
 const detection_radius: float = 20.0
-const fov: float = 90
+const fov: float = 180
 var knows_your_position: bool = false
 const min_sound_distance: float = 18 # A partir de qué distancia se empieza a escuchar el ruido
 const max_sound_distance: float = 4 # Punto en el que el ruido es más fuerte

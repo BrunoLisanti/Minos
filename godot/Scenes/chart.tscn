@@ -40,7 +40,6 @@ mesh = SubResource("BoxMesh_vmmkg")
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.5, 0.50257, 0.99743)
 visible = false
 layers = 524288
-shadow_enabled = true
 spot_range = 1.5
 spot_angle = 25.0
 
@@ -48,7 +47,6 @@ spot_angle = 25.0
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0.5, 0.50257, 0.99743)
 visible = false
 layers = 524288
-shadow_enabled = true
 spot_range = 1.5
 spot_angle = 25.0
 
@@ -56,7 +54,6 @@ spot_angle = 25.0
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.5, -0.5, 1)
 visible = false
 layers = 524288
-shadow_enabled = true
 spot_range = 1.5
 spot_angle = 25.0
 
@@ -64,6 +61,5 @@ spot_angle = 25.0
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0.5, -0.49743, 0.99743)
 visible = false
 layers = 524288
-shadow_enabled = true
 spot_range = 1.5
 spot_angle = 25.0
