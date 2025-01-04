@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://svglya4ctrq6"]
+[gd_scene load_steps=8 format=3 uid="uid://svglya4ctrq6"]
 
-[ext_resource type="Script" path="res://Scripts/chart.gd" id="1_63dh6"]
+[ext_resource type="Script" path="res://Scripts/chart/chart.gd" id="1_63dh6"]
+[ext_resource type="Script" path="res://Scripts/chart/area.gd" id="2_c0yo6"]
+[ext_resource type="Texture2D" uid="uid://bub34yok6w86b" path="res://textures/tick.png" id="2_ljyuf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyv1u"]
 albedo_color = Color(0.65, 0.527908, 0.3315, 1)
@@ -17,49 +19,97 @@ size = Vector3(2, 0.001, 0.1)
 [node name="Chart" type="Node3D"]
 script = ExtResource("1_63dh6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.0175, 0, 0, 0, -4.40938e-10, -2.0175, 0, 0.0100875, -8.81876e-08, 0, 0.00256977, -0.00256977)
 layers = 524288
 mesh = SubResource("BoxMesh_nlxef")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Divider" type="Node3D" parent="."]
+
+[node name="Horizontal" type="MeshInstance3D" parent="Divider"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00256977, 0.00256977)
 layers = 524288
 material_override = SubResource("StandardMaterial3D_jchwl")
 mesh = SubResource("BoxMesh_vmmkg")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="Vertical" type="MeshInstance3D" parent="Divider"]
 transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 0, 0.00256977, 0.00256977)
 layers = 524288
 material_override = SubResource("StandardMaterial3D_jchwl")
 mesh = SubResource("BoxMesh_vmmkg")
+skeleton = NodePath("../..")
 
-[node name="Highlights" type="Node3D" parent="."]
+[node name="Areas" type="Node3D" parent="."]
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="Highlights"]
+[node name="Area1" type="Node3D" parent="Areas"]
+script = ExtResource("2_c0yo6")
+
+[node name="Highlight" type="SpotLight3D" parent="Areas/Area1"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.5, 0.50257, 0.99743)
 visible = false
 layers = 524288
+light_color = Color(0, 1, 0, 1)
+light_cull_mask = 4294443008
 spot_range = 1.5
 spot_angle = 25.0
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Highlights"]
+[node name="Check" type="Sprite3D" parent="Areas/Area1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, -0.5, 0.5, 0.006)
+visible = false
+layers = 524288
+texture = ExtResource("2_ljyuf")
+
+[node name="Area2" type="Node3D" parent="Areas"]
+script = ExtResource("2_c0yo6")
+
+[node name="Highlight" type="SpotLight3D" parent="Areas/Area2"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0.5, 0.50257, 0.99743)
 visible = false
 layers = 524288
+light_color = Color(1, 0, 0, 1)
+light_cull_mask = 4294443008
 spot_range = 1.5
 spot_angle = 25.0
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Highlights"]
+[node name="Check" type="Sprite3D" parent="Areas/Area2"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, 0.5, 0.5, 0.006)
+visible = false
+layers = 524288
+texture = ExtResource("2_ljyuf")
+
+[node name="Area3" type="Node3D" parent="Areas"]
+script = ExtResource("2_c0yo6")
+
+[node name="Highlight" type="SpotLight3D" parent="Areas/Area3"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -0.5, -0.5, 1)
 visible = false
 layers = 524288
+light_color = Color(0.0470588, 0.501961, 1, 1)
+light_cull_mask = 4294443008
 spot_range = 1.5
 spot_angle = 25.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Highlights"]
+[node name="Check" type="Sprite3D" parent="Areas/Area3"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, -0.5, -0.5, 0.006)
+visible = false
+layers = 524288
+texture = ExtResource("2_ljyuf")
+
+[node name="Area4" type="Node3D" parent="Areas"]
+script = ExtResource("2_c0yo6")
+
+[node name="Highlight" type="SpotLight3D" parent="Areas/Area4"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0.5, -0.49743, 0.99743)
 visible = false
 layers = 524288
+light_color = Color(1, 1, 0, 1)
+light_cull_mask = 4294443008
 spot_range = 1.5
 spot_angle = 25.0
+
+[node name="Check" type="Sprite3D" parent="Areas/Area4"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, 0.5, -0.5, 0.006)
+visible = false
+layers = 524288
+texture = ExtResource("2_ljyuf")

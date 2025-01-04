@@ -1,15 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkrit1or0dx6l"]
+[gd_scene load_steps=11 format=3 uid="uid://dkrit1or0dx6l"]
 
 [ext_resource type="Script" path="res://Scripts/box_viewmodel.gd" id="1_f2gmr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xogq0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhrcf"]
-albedo_color = Color(1, 0.39, 0.39, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc4gm"]
+albedo_color = Color(3.17663e-06, 0.750257, 0.268759, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4mi25"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bw0a7"]
+albedo_color = Color(0, 0.74902, 0.270588, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhrcf"]
+albedo_color = Color(1, 0.39, 0.39, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a20li"]
+albedo_color = Color(0, 0.337255, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt31s"]
+albedo_color = Color(0, 0.337255, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q56i4"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igtl8"]
+albedo_color = Color(1, 1, 0, 1)
+
 [node name="BoxViewmodel" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0114119, 0, -0.00380394)
 script = ExtResource("1_f2gmr")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
@@ -68,50 +87,66 @@ skeleton = NodePath("")
 
 [node name="Flowers" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Flowers"]
+[node name="Area1" type="Node3D" parent="Flowers"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Flowers/Area1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.153206, 0.045858, -0.07013)
 layers = 524288
-material_override = SubResource("StandardMaterial3D_xhrcf")
+material_override = SubResource("StandardMaterial3D_vc4gm")
 mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Flowers"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Flowers/Area1"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.482, 0.046, -0.07)
+layers = 524288
+material_override = SubResource("StandardMaterial3D_bw0a7")
+mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
+
+[node name="Area2" type="Node3D" parent="Flowers"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Flowers/Area2"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.153, 0.046, -0.07)
 layers = 524288
 material_override = SubResource("StandardMaterial3D_xhrcf")
 mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Flowers"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Flowers/Area2"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.4816, 0.046, -0.07)
 layers = 524288
 material_override = SubResource("StandardMaterial3D_xhrcf")
 mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Flowers"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.482, 0.046, -0.07)
-layers = 524288
-material_override = SubResource("StandardMaterial3D_xhrcf")
-mesh = SubResource("SphereMesh_4mi25")
+[node name="Area3" type="Node3D" parent="Flowers"]
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Flowers"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Flowers/Area3"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.153206, 0.045858, 0.07)
 layers = 524288
-material_override = SubResource("StandardMaterial3D_xhrcf")
+material_override = SubResource("StandardMaterial3D_a20li")
 mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Flowers"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.153, 0.046, 0.07)
-layers = 524288
-material_override = SubResource("StandardMaterial3D_xhrcf")
-mesh = SubResource("SphereMesh_4mi25")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Flowers"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.4816, 0.046, 0.07)
-layers = 524288
-material_override = SubResource("StandardMaterial3D_xhrcf")
-mesh = SubResource("SphereMesh_4mi25")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Flowers"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Flowers/Area3"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.482, 0.046, 0.07)
 layers = 524288
-material_override = SubResource("StandardMaterial3D_xhrcf")
+material_override = SubResource("StandardMaterial3D_wt31s")
 mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
+
+[node name="Area4" type="Node3D" parent="Flowers"]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Flowers/Area4"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.153, 0.046, 0.07)
+layers = 524288
+material_override = SubResource("StandardMaterial3D_q56i4")
+mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Flowers/Area4"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.4816, 0.046, 0.07)
+layers = 524288
+material_override = SubResource("StandardMaterial3D_igtl8")
+mesh = SubResource("SphereMesh_4mi25")
+skeleton = NodePath("../..")

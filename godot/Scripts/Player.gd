@@ -36,6 +36,8 @@ var carrying: bool = false
 @onready var viewmodel: Node3D = $Head/Viewmodel
 @onready var viewmodel_y_origin: float = viewmodel.position.y
 
+var current_area: int
+
 func _ready()->void:
 	if kbm: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -44,9 +46,11 @@ func _process(_delta):
 	viewmodel.position.y = viewmodel_y_origin + clamp(-head.rotation.x * .25, -1, .05)
 	
 	if global_position.z > 0:
-		chart.highlight(2 if global_position.x < 0 else 3)
+		current_area = 2 if global_position.x < 0 else 3
 	else:
-		chart.highlight(0 if global_position.x < 0 else 1)
+		current_area = 0 if global_position.x < 0 else 1
+		
+	chart.highlight(current_area)
 	
 	if Input.is_action_just_pressed("interact"):
 		if !carrying:
@@ -118,5 +122,8 @@ func _physics_process(delta):
 func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
 		body.call_deferred("queue_free")
-		box_viewmodel.remove_flower()
+		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
+		print("removed flower in area ", current_area)
+		if (area_cleared): chart.check(current_area)
+		print("" if not area_cleared else "area cleared")
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
