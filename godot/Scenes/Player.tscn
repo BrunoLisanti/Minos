@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://clwd2pt32yncv"]
+[gd_scene load_steps=25 format=3 uid="uid://clwd2pt32yncv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3b6d0"]
 [ext_resource type="PackedScene" uid="uid://ragpw1u7o272" path="res://Scenes/SoundPool.tscn" id="3_5wyd6"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/movement_component.gd" id="20_0lofs"]
 [ext_resource type="PackedScene" uid="uid://dkrit1or0dx6l" path="res://Scenes/BoxViewmodel.tscn" id="20_nane8"]
 [ext_resource type="AudioStream" uid="uid://c2u366qvrse6p" path="res://sound/player/footsteps/footstep-17.wav" id="20_otevg"]
+[ext_resource type="PackedScene" uid="uid://svglya4ctrq6" path="res://Scenes/chart.tscn" id="21_ufli1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mraqt"]
 
@@ -47,9 +48,18 @@ shape = SubResource("ConvexPolygonShape3D_t1wh2")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="BoxViewmodel" parent="Head" instance=ExtResource("20_nane8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.404, -0.572)
+[node name="Viewmodel" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.415, -0.572)
+
+[node name="BoxViewmodel" parent="Head/Viewmodel" instance=ExtResource("20_nane8")]
+transform = Transform3D(0.9, 1.00356e-08, -3.7106e-10, -1.00356e-08, 0.897543, -0.0664627, -3.7106e-10, 0.0664627, 0.897543, 0, -0.000365853, 0)
 visible = false
+
+[node name="ChartAnchor" type="Node3D" parent="Head/Viewmodel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.098, 0.329399, 0.229)
+
+[node name="Chart" parent="Head/Viewmodel/ChartAnchor" instance=ExtResource("21_ufli1")]
+transform = Transform3D(0.192719, 0, -0.0534746, 0, 0.2, 0, 0.0534746, 0, 0.192719, -0.000257999, 0.000129342, -0.000195265)
 
 [node name="Vision" type="Node3D" parent="Head"]
 
@@ -155,7 +165,7 @@ size = Vector2i(640, 480)
 render_target_update_mode = 4
 
 [node name="BoxCamera" type="Camera3D" parent="Control/BoxViewportContainer/SubViewport"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.43894e-08, 0.639569, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.5, 0)
 cull_mask = 524288
 
 [node name="FloorRaycast" type="RayCast3D" parent="."]

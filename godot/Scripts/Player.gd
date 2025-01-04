@@ -16,27 +16,37 @@ var step_time: float = 0
 
 const lean_distance: float = .75
 
-const kbm := false
+const kbm := true
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Vision/Camera
 @onready var box: Resource = preload("res://Scenes/Cajon.tscn")
 @onready var viewmodel_camera: Camera3D = $Control/BoxViewportContainer/SubViewport/BoxCamera
-@onready var box_viewmodel: Node3D = $Head/BoxViewmodel
+@onready var box_viewmodel: Node3D = $Head/Viewmodel/BoxViewmodel
 @onready var footsteps_pool: Node = $FootstepsPool
 @onready var floor_raycast: RayCast3D = $FloorRaycast
 @onready var interaction_range: Area3D = $InteractionArea
 @onready var world: Node = get_parent()
+@onready var chart: Node3D = $Head/Viewmodel/ChartAnchor/Chart
 
 @onready var movement_component: MovementComponent = $MovementComponent
 
 var carrying: bool = false
+
+@onready var viewmodel: Node3D = $Head/Viewmodel
+@onready var viewmodel_y_origin: float = viewmodel.position.y
 
 func _ready()->void:
 	if kbm: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(_delta):
 	viewmodel_camera.global_transform = camera.global_transform
+	viewmodel.position.y = viewmodel_y_origin + clamp(-head.rotation.x * .25, -1, .05)
+	
+	if global_position.z > 0:
+		chart.highlight(2 if global_position.x < 0 else 3)
+	else:
+		chart.highlight(0 if global_position.x < 0 else 1)
 	
 	if Input.is_action_just_pressed("interact"):
 		if !carrying:
@@ -72,7 +82,9 @@ func _physics_process(delta):
 		var lean_direction := (1 if Input.is_action_pressed("lean_right") else 0) - (1 if Input.is_action_pressed("lean_left") else 0)
 		head.position.x = lerp(head.position.x, lean_distance * lean_direction, 20 * delta)
 		head.rotation.z = lerp(head.rotation.z, deg_to_rad(20 * -lean_direction), 20 * delta)
-		
+	
+	chart.position.y = lerp(chart.position.y, -1.0 if !Input.is_action_pressed("open_map") else 0.0, 20 * delta)
+	
 	var y_rotation := (1 if Input.is_action_pressed("rotate_left") else 0) - (1 if Input.is_action_pressed("rotate_right") else 0) # 0, 1 o -1 de acuerdo a qué teclas estén apretadas.
 	rotate_y(y_rotation * turn_speed * delta)
 	
