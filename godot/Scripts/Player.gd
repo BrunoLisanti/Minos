@@ -20,7 +20,7 @@ const kbm := true
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Vision/Camera
-@onready var box: Resource = preload("res://Scenes/Cajon.tscn")
+@onready var box: Resource = preload("res://Scenes/box.tscn")
 @onready var viewmodel_camera: Camera3D = $Control/BoxViewportContainer/SubViewport/BoxCamera
 @onready var box_viewmodel: Node3D = $Head/Viewmodel/BoxViewmodel
 @onready var footsteps_pool: Node = $FootstepsPool
@@ -55,7 +55,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		if !carrying:
 			for body in interaction_range.get_overlapping_bodies():
-				if (body.is_in_group("pickable")):
+				if (body.is_in_group("pickable") and body.is_on_floor()):
 					body.queue_free()
 					carrying = true
 					break
@@ -83,19 +83,19 @@ func _input(event: InputEvent)->void:
 
 func _physics_process(delta):
 	if kbm:
-		var lean_direction := (1 if Input.is_action_pressed("lean_right") else 0) - (1 if Input.is_action_pressed("lean_left") else 0)
+		var lean_direction := Input.get_axis("lean_left","lean_right")
 		head.position.x = lerp(head.position.x, lean_distance * lean_direction, 20 * delta)
 		head.rotation.z = lerp(head.rotation.z, deg_to_rad(20 * -lean_direction), 20 * delta)
 	
 	chart.position.y = lerp(chart.position.y, -1.0 if !Input.is_action_pressed("open_map") else 0.0, 20 * delta)
 	
-	var y_rotation := (1 if Input.is_action_pressed("rotate_left") else 0) - (1 if Input.is_action_pressed("rotate_right") else 0) # 0, 1 o -1 de acuerdo a qué teclas estén apretadas.
+	var y_rotation := Input.get_axis("rotate_left", "rotate_right")
 	rotate_y(y_rotation * turn_speed * delta)
 	
 	var x_direction: int = 0
 	if kbm:
-		x_direction = (1 if Input.is_action_pressed("strafe_right") else 0) - (1 if Input.is_action_pressed("strafe_left") else 0)
-	var z_direction := (1 if Input.is_action_pressed("backward") else 0) - (1 if Input.is_action_pressed("forward") else 0)
+		x_direction = Input.get_axis("strafe_left", "strafe_right")
+	var z_direction := Input.get_axis("forward", "backward")
 	
 	var direction := Vector3(x_direction, 0, z_direction).normalized()
 	
@@ -124,6 +124,6 @@ func _on_interaction_area_body_entered(body: Node3D)->void:
 		body.call_deferred("queue_free")
 		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
 		print("removed flower in area ", current_area)
-		if (area_cleared): chart.check(current_area)
+		if (area_cleared): chart.check(current_area)	
 		print("" if not area_cleared else "area cleared")
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
