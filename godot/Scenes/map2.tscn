@@ -6,7 +6,7 @@
 
 [node name="Map" type="Node3D"]
 
-[node name="Walls" type="GridMap" parent="."]
+[node name="Walls" type="GridMap" parent="." groups=["wall"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -7)
 mesh_library = ExtResource("1_d8ggt")
 cell_scale = 2.0

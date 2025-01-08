@@ -12,7 +12,7 @@ size = Vector3(1.31934, 0.20752, 0.311157)
 lock_rotation = true
 continuous_cd = true
 contact_monitor = true
-max_contacts_reported = 3
+max_contacts_reported = 16
 script = ExtResource("1_xevcj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -28,3 +28,4 @@ stream = ExtResource("2_4dbp6")
 volume_db = -1.524
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="FallSound" to="." method="_on_fall_sound_finished"]
