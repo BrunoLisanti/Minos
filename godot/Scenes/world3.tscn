@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bgctffdjn8npo" path="res://Scenes/map2.tscn" id="1_jwn67"]
 [ext_resource type="PackedScene" uid="uid://clwd2pt32yncv" path="res://Scenes/Player.tscn" id="2_h5ha1"]
 [ext_resource type="PackedScene" uid="uid://deex24tw48bch" path="res://Scenes/monster.tscn" id="3_1a4gh"]
-[ext_resource type="PackedScene" uid="uid://dg6nbktm8kp15" path="res://Scenes/Cajon.tscn" id="4_o6ec7"]
+[ext_resource type="PackedScene" uid="uid://dg6nbktm8kp15" path="res://Scenes/box.tscn" id="4_o6ec7"]
 [ext_resource type="PackedScene" uid="uid://cqth65c1jdgc1" path="res://Scenes/objective.tscn" id="4_rtd53"]
 [ext_resource type="PackedScene" uid="uid://cl3hmoibbn0p8" path="res://Scenes/debug.tscn" id="6_jcjxk"]
 

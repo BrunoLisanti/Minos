@@ -14,7 +14,7 @@ var t_bob := 0.0
 # Pasos
 var step_time: float = 0
 
-const lean_distance: float = .75
+const max_lean_distance: float = .75
 
 const kbm := true
 
@@ -36,10 +36,15 @@ var carrying: bool = false
 @onready var viewmodel: Node3D = $Head/Viewmodel
 @onready var viewmodel_y_origin: float = viewmodel.position.y
 
+var lean_raycast: RayCast3D
+
 var current_area: int
 
 func _ready()->void:
 	if kbm: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	lean_raycast = RayCast3D.new()
+	lean_raycast.position = head.position
+	add_child(lean_raycast)
 
 func _process(_delta):
 	viewmodel_camera.global_transform = camera.global_transform
@@ -82,22 +87,22 @@ func _input(event: InputEvent)->void:
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 func _physics_process(delta):
-	if kbm:
-		var lean_direction := Input.get_axis("lean_left","lean_right")
-		head.position.x = lerp(head.position.x, lean_distance * lean_direction, 20 * delta)
-		head.rotation.z = lerp(head.rotation.z, deg_to_rad(20 * -lean_direction), 20 * delta)
-	
 	chart.position.y = lerp(chart.position.y, -1.0 if !Input.is_action_pressed("open_map") else 0.0, 20 * delta)
 	
 	var y_rotation := Input.get_axis("rotate_left", "rotate_right")
 	rotate_y(y_rotation * turn_speed * delta)
 	
-	var x_direction: int = 0
-	if kbm:
-		x_direction = Input.get_axis("strafe_left", "strafe_right")
+	var x_direction: int = Input.get_axis("strafe_left", "strafe_right") if kbm else 0
 	var z_direction := Input.get_axis("forward", "backward")
-	
 	var direction := Vector3(x_direction, 0, z_direction).normalized()
+	
+	if kbm:
+		var lean_direction := Input.get_axis("lean_left","lean_right")
+		lean_raycast.target_position = Vector3(lean_direction * (max_lean_distance + .5), 0, 0)
+		lean_raycast.force_raycast_update()
+		var lean_distance: float = max_lean_distance if !lean_raycast.is_colliding() else abs(to_local(lean_raycast.get_collision_point()).x) / 4
+		head.position.x = lerp(head.position.x, lean_distance * lean_direction, 8 * delta)
+		head.rotation.z = lerp(head.rotation.z, deg_to_rad(20) * (lean_distance / max_lean_distance) * -lean_direction, 8 * delta)
 	
 	var speed := SPEED if !carrying else SPEED / 1.5
 	speed = speed if direction.z <= 0 else speed / 2
@@ -123,7 +128,5 @@ func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
 		body.call_deferred("queue_free")
 		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
-		print("removed flower in area ", current_area)
-		if (area_cleared): chart.check(current_area)	
-		print("" if not area_cleared else "area cleared")
+		if (area_cleared): chart.check(current_area)
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()

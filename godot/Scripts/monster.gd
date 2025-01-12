@@ -41,10 +41,9 @@ func can_see(object: CollisionObject3D, offset: Vector3 = Vector3.ZERO)->bool:
 	if cosine_of_angle_to_object < cos(deg_to_rad(fov / 2)): return false
 	
 	# verificar si hay una pared entre ellos
-	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var raycast_query = PhysicsRayQueryParameters3D.create(head.global_position, object.global_position + offset)
 	raycast_query.exclude = [get_rid(), object.get_rid()] # No es necesario excluir también el KillArea porque por defecto PhysicsRayQueryParameters3D no toma en consideración los nodos Area3D.
-	return space.intersect_ray(raycast_query).is_empty()
+	return get_world_3d().direct_space_state.intersect_ray(raycast_query).is_empty()
 
 func _on_memory_timeout():
 	knows_your_position = false
