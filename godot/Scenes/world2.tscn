@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clwd2pt32yncv" path="res://Scenes/Player.tscn" id="2_1vgft"]
 [ext_resource type="PackedScene" uid="uid://deex24tw48bch" path="res://Scenes/monster.tscn" id="3_ws8mf"]
 [ext_resource type="PackedScene" uid="uid://cl3hmoibbn0p8" path="res://Scenes/debug.tscn" id="4_2hlg5"]
-[ext_resource type="PackedScene" uid="uid://dg6nbktm8kp15" path="res://Scenes/Cajon.tscn" id="5_5npxw"]
+[ext_resource type="PackedScene" uid="uid://dg6nbktm8kp15" path="res://Scenes/box.tscn" id="5_5npxw"]
 [ext_resource type="PackedScene" uid="uid://cqth65c1jdgc1" path="res://Scenes/objective.tscn" id="6_rnlde"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1ls4a"]
