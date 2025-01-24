@@ -38,10 +38,5 @@ func get_next_point()->Vector3:
 	return path[path_index]
 
 func get_random_point(radius: float, origin: Vector3)->Vector3:
-	print("finding random point")
-	var x := randf_range(-radius, radius)
-	var z := randf_range(-radius, radius)
-	while (sqrt(x**2 + z**2) >= radius):
-		x = randf_range(-radius, radius)
-		z = randf_range(-radius, radius)
-	return NavigationServer3D.map_get_closest_point(map, Vector3(origin.x + x, agent.global_position.y, origin.z + z))
+	var point: Vector2 = Vector2(origin.x, origin.z) + utility.random_point_in_circle(radius)
+	return NavigationServer3D.map_get_closest_point(map, Vector3(point.x, agent.global_position.y, point.y))

@@ -74,7 +74,7 @@ func _process(_delta):
 		box_viewmodel.visible = carrying
 		
 	if OS.is_debug_build():
-		if Input.is_action_just_pressed("change_camera"):
+		if Input.is_action_just_pressed("debug_action_1"):
 			if (camera.current):
 				$Head/Vision/TopCamera.make_current()
 			else:

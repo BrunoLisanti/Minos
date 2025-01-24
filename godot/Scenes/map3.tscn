@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://5twoqippo3ge"]
 
-[ext_resource type="MeshLibrary" uid="uid://ppjaqx7gwlrt" path="res://meshes/tileset/tiles-piso.tres" id="1_bruwn"]
-[ext_resource type="MeshLibrary" uid="uid://c03mw07lv4ror" path="res://meshes/tileset/tiles.tres" id="2_tuok5"]
+[ext_resource type="MeshLibrary" uid="uid://ppjaqx7gwlrt" path="res://tileset/floor.tres" id="1_bruwn"]
+[ext_resource type="MeshLibrary" uid="uid://c03mw07lv4ror" path="res://tileset/tomb.tres" id="2_tuok5"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_30eyv"]
 

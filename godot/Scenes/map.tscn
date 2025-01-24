@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhhv5tn3kva43"]
 
-[ext_resource type="MeshLibrary" uid="uid://d3fygku58ya2s" path="res://placeholder-tiles.tres" id="1_wre2y"]
+[ext_resource type="MeshLibrary" uid="uid://d3fygku58ya2s" path="res://tileset/placeholder-tiles.tres" id="1_wre2y"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_30eyv"]
 

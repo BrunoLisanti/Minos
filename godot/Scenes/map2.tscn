@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgctffdjn8npo"]
 
-[ext_resource type="MeshLibrary" uid="uid://d3fygku58ya2s" path="res://placeholder-tiles.tres" id="1_d8ggt"]
-[ext_resource type="MeshLibrary" uid="uid://dde7gwapk1sxp" path="res://meshes/tileset/tileset.tres" id="2_bqw5u"]
+[ext_resource type="MeshLibrary" uid="uid://d3fygku58ya2s" path="res://tileset/placeholder-tiles.tres" id="1_d8ggt"]
+[ext_resource type="MeshLibrary" uid="uid://c03mw07lv4ror" path="res://tileset/tomb.tres" id="2_bqw5u"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_30eyv"]
 

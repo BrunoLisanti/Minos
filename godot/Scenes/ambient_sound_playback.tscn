@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b677ufuec3a4c"]
+
+[ext_resource type="Script" path="res://Scripts/ambient_sound_playback.gd" id="1_bvkjf"]
+[ext_resource type="PackedScene" uid="uid://ragpw1u7o272" path="res://Scenes/SoundPool.tscn" id="2_w88q1"]
+[ext_resource type="AudioStream" uid="uid://q2y6fmqs68fe" path="res://sound/events/cry1.wav" id="3_8teew"]
+[ext_resource type="AudioStream" uid="uid://dkoba0w7dw2n4" path="res://sound/events/chisel1.wav" id="4_fk63q"]
+[ext_resource type="AudioStream" uid="uid://c6dvvl6x7223g" path="res://sound/events/scraping1.wav" id="5_hc2in"]
+[ext_resource type="AudioStream" uid="uid://c03dr7ovxv6t2" path="res://sound/events/bell1.wav" id="6_m8p2b"]
+
+[node name="AmbientSoundPlayback" type="Node3D"]
+script = ExtResource("1_bvkjf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="SoundPool" parent="." instance=ExtResource("2_w88q1")]
+
+[node name="Cry1" type="AudioStreamPlayer3D" parent="SoundPool"]
+stream = ExtResource("3_8teew")
+max_distance = 30.0
+
+[node name="Chisel1" type="AudioStreamPlayer3D" parent="SoundPool"]
+stream = ExtResource("4_fk63q")
+max_distance = 60.0
+
+[node name="Scraping1" type="AudioStreamPlayer3D" parent="SoundPool"]
+stream = ExtResource("5_hc2in")
+max_distance = 50.0
+
+[node name="Bell1" type="AudioStreamPlayer3D" parent="SoundPool"]
+stream = ExtResource("6_m8p2b")
+volume_db = 3.0
+max_distance = 80.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
