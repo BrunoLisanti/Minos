@@ -1,8 +1,48 @@
-[gd_scene load_steps=8 format=3 uid="uid://svglya4ctrq6"]
+[gd_scene load_steps=12 format=3 uid="uid://svglya4ctrq6"]
 
 [ext_resource type="Script" path="res://Scripts/chart/chart.gd" id="1_63dh6"]
 [ext_resource type="Script" path="res://Scripts/chart/area.gd" id="2_c0yo6"]
 [ext_resource type="Texture2D" uid="uid://bub34yok6w86b" path="res://textures/tick.png" id="2_ljyuf"]
+[ext_resource type="Texture2D" uid="uid://cam2j2rbjm8dq" path="res://meshes/props_mapareco.png" id="2_mlptx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wceaa"]
+resource_name = "mapa"
+cull_mode = 2
+albedo_texture = ExtResource("2_mlptx")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vpugu"]
+_surfaces = [{
+"aabb": AABB(-0.192112, 0, -0.192112, 0.384223, 1e-05, 0.384223),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "mapa",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d32s0"]
+resource_name = "props_Plane_032"
+_surfaces = [{
+"aabb": AABB(-0.192112, 0, -0.192112, 0.384223, 1e-05, 0.384223),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_wceaa"),
+"name": "mapa",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 254, 255, 84, 213, 254, 255, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vpugu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyv1u"]
 albedo_color = Color(0.65, 0.527908, 0.3315, 1)
@@ -19,12 +59,20 @@ size = Vector3(2, 0.001, 0.1)
 [node name="Chart" type="Node3D"]
 script = ExtResource("1_63dh6")
 
+[node name="mapamano" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.27299e-07, -4.37114e-08, -5.2, -5.2, 1.91069e-15, 2.27299e-07, 0, 1, -2.27299e-07, 0, -2.32831e-10, 2.32831e-10)
+layers = 524288
+mesh = SubResource("ArrayMesh_d32s0")
+skeleton = NodePath("")
+
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.0175, 0, 0, 0, -4.40938e-10, -2.0175, 0, 0.0100875, -8.81876e-08, 0, 0.00256977, -0.00256977)
+visible = false
 layers = 524288
 mesh = SubResource("BoxMesh_nlxef")
 
 [node name="Divider" type="Node3D" parent="."]
+visible = false
 
 [node name="Horizontal" type="MeshInstance3D" parent="Divider"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.00256977, 0.00256977)
