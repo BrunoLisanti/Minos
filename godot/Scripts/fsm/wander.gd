@@ -35,6 +35,7 @@ func physics_process(delta)->void:
 		else:
 			change_behaviour(true)
 			monster.pathfinding_component.set_path(monster.pathfinding_component.get_random_point(stalk_radius, player.global_position))
+			print("setting new path")
 			
 	if player.detectable and monster.global_position.distance_to(player.global_position) < monster.detection_radius && monster.can_see(player, Vector3(0, player.head.position.y, 0)):
 		time_aware += delta

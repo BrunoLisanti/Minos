@@ -25,7 +25,7 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4142, 1.13326, 6.04574)
 shape = SubResource("WorldBoundaryShape3D_30eyv")
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="." groups=["wall"]]
 mesh_library = ExtResource("2_tuok5")
 collision_layer = 3
 collision_mask = 3

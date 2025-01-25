@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg6nbktm8kp15"]
+[gd_scene load_steps=6 format=3 uid="uid://dg6nbktm8kp15"]
 
 [ext_resource type="Script" path="res://Scripts/box.gd" id="1_xevcj"]
 [ext_resource type="AudioStream" uid="uid://dyrx3o71hyitm" path="res://sound/box/box.wav" id="2_4dbp6"]
+[ext_resource type="PackedScene" uid="uid://d216wmmrnfbmh" path="res://Scenes/BoxModel.tscn" id="3_j3ku3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7xfs"]
 size = Vector3(1.31934, 0.20752, 0.311157)
@@ -21,11 +22,14 @@ shape = SubResource("BoxShape3D_l7xfs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.3216, 0, 0, 0, 0.2, -1.16415e-10, 0, 0, 0.3, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_a1ruc")
 
 [node name="FallSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_4dbp6")
 volume_db = -1.524
+
+[node name="BoxModel" parent="." instance=ExtResource("3_j3ku3")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="FallSound" to="." method="_on_fall_sound_finished"]

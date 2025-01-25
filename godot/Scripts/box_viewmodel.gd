@@ -1,11 +1,13 @@
 extends Node3D
 
-@onready var areas: Node3D = $Flowers
+@onready var model: Node3D = $BoxModel
+@onready var areas: Node3D = $BoxModel/Flowers
 var remaining: int
 
 func _ready()->void:
 	for area in areas.get_children():
 		remaining += area.get_child_count()
+	utility.set_layer_recursively(model, (2**20)/2) # Layer 20 en complemento a dos
 
 func remove_flower(area: int)->bool:
 	if (remaining == 0 || area < 0 || area >= areas.get_child_count()): return false

@@ -20,7 +20,7 @@ func exit()->void:
 	pass #print("Exited chase")
 
 func physics_process(delta)->void:
-	if monster.knows_your_position:
+	if player.detectable and monster.knows_your_position:
 		target = player.global_transform.origin
 		monster.pathfinding_component.set_path(target, false)
 	monster.move_towards(monster.pathfinding_component.get_next_point(), delta)

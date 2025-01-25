@@ -24,7 +24,7 @@ const kbm := true
 @onready var viewmodel_camera: Camera3D = $Control/BoxViewportContainer/SubViewport/BoxCamera
 @onready var box_viewmodel: Node3D = $Head/Viewmodel/BoxViewmodel
 @onready var footsteps_pool: Node = $FootstepsPool
-@onready var floor_raycast: RayCast3D = $FloorRaycast
+@onready var vision_raycast: RayCast3D = $VisionRaycast
 @onready var interaction_range: Area3D = $InteractionArea
 @onready var world: Node = get_parent()
 @onready var chart: Node3D = $Head/Viewmodel/ChartAnchor/Chart
@@ -32,6 +32,7 @@ const kbm := true
 @onready var movement_component: MovementComponent = $MovementComponent
 
 var carrying: bool = false
+var box_drop_distance: float = 1
 
 @onready var viewmodel: Node3D = $Head/Viewmodel
 @onready var viewmodel_y_origin: float = viewmodel.position.y
@@ -60,6 +61,7 @@ func _process(_delta):
 	chart.highlight(current_area)
 	
 	if Input.is_action_just_pressed("interact"):
+		
 		if !carrying:
 			for body in interaction_range.get_overlapping_bodies():
 				if (body.is_in_group("pickable") and body.is_on_floor()):
@@ -69,8 +71,15 @@ func _process(_delta):
 		else:
 			var box_instance: Node = box.instantiate()
 			world.add_child(box_instance)
-			box_instance.global_position = global_position + Vector3.UP + -transform.basis.z
+			vision_raycast.target_position = Vector3(0, 0, -box_drop_distance)
+			vision_raycast.force_raycast_update()
+			box_instance.global_position = global_position + Vector3.UP + -transform.basis.z if not vision_raycast.is_colliding() else vision_raycast.get_collision_point()
 			box_instance.rotation = rotation
+			
+			var dupe = box_viewmodel.model.duplicate() # Copiamos cómo se ve la caja actualmente
+			utility.set_layer_recursively(dupe, 1) # Colocamos todos sus meshes en layer 1 para que no se vea a través de las paredes como el viewmodel
+			box_instance.model.queue_free()
+			box_instance.add_child(dupe)
 			carrying = false
 			
 		box_viewmodel.visible = carrying

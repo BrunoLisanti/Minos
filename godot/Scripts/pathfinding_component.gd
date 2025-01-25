@@ -22,7 +22,6 @@ func init(n: NavigationRegion3D, d: Node):
 	debug = d
 
 func set_path(to: Vector3, restrictive: bool = true)->void:
-	print("setting new path ", to)
 	path = NavigationServer3D.map_get_path(map, agent.global_transform.origin, to, !restrictive) # se supone que al usar restrictive se va a mover exclusivamente por el medio de los pasillos. no debería ser el caso cuando está persiguiendo al jugador.
 	path_index = 0
 	if OS.is_debug_build() and debug != null:
