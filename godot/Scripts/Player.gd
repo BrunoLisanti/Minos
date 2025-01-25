@@ -40,6 +40,8 @@ var lean_raycast: RayCast3D
 
 var current_area: int
 
+var detectable := true
+
 func _ready()->void:
 	if kbm: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	lean_raycast = RayCast3D.new()
@@ -79,6 +81,9 @@ func _process(_delta):
 				$Head/Vision/TopCamera.make_current()
 			else:
 				camera.make_current()
+		elif Input.is_action_just_pressed("debug_action_3"):
+			detectable = not detectable
+			print("player is ", ("not " if not detectable else ""), "detectable")
 
 func _input(event: InputEvent)->void:
 	if kbm and event is InputEventMouseMotion:
