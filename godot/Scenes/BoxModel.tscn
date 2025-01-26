@@ -670,7 +670,7 @@ mesh = SubResource("ArrayMesh_xmfql")
 skeleton = NodePath("")
 
 [node name="bouquet8" type="MeshInstance3D" parent="Flowers/Area4"]
-transform = Transform3D(0.00385999, 0, -0.0297506, 0, -0.03, 0, 0.0297506, 0, 0.00385999, 0.098605, 0.24709, -0.462933)
+transform = Transform3D(-0.00668037, 0, -0.0292467, 0, -0.03, 0, 0.0292467, 0, -0.00668037, 0.098605, 0.24709, -0.457707)
 mesh = SubResource("ArrayMesh_xmfql")
 skeleton = NodePath("")
 

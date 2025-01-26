@@ -22,11 +22,7 @@ var speed := wander_speed
 func _ready():
 	randomize()
 	pathfinding_component.init(navigation, debug)
-	#danger.volume_db = 0
-	#danger.play()
-
-#func _process(_delta: float)->void:
-	#danger.volume_db = linear_to_db(clamp(remap(global_position.distance_to(prey.global_position), min_sound_distance, max_sound_distance, 0, 1), 0, 1)) # Mapeamos la distancia entre el jugador y el monstruo a un valor entre 0 y 1 para pasárselo a linear_to_db.
+	danger.max_distance = detection_radius * 1.25
 
 func move_towards(where: Vector3, delta: float)->void:
 	movement_component.move(position.direction_to(where), speed, 8, false, delta)

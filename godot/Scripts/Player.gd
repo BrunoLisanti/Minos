@@ -140,7 +140,8 @@ func _physics_process(delta):
 
 func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
-		body.call_deferred("queue_free")
+		if !body.active: return
+		body.use()
 		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
 		if (area_cleared): chart.check(current_area)
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
