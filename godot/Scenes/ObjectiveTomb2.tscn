@@ -11,28 +11,24 @@
 resource_name = "bov4"
 cull_mode = 2
 albedo_texture = ExtResource("2_rmsaj")
-roughness = 0.5
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqtrk"]
 resource_name = "bov3texb"
 cull_mode = 2
 albedo_texture = ExtResource("3_yne0n")
-roughness = 0.5
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bk4r5"]
 resource_name = "bov4texa"
 cull_mode = 2
 albedo_texture = ExtResource("4_i4tji")
-roughness = 0.5
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mmm3"]
 resource_name = "bov4texb"
 cull_mode = 2
 albedo_texture = ExtResource("5_6coxd")
-roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6vs2"]
 resource_name = "bov3luz"
@@ -96,7 +92,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_i57ya"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_sttwq"]
 resource_name = "bovluz_Cube_018"
 _surfaces = [{
 "aabb": AABB(1.13159, -5.13416e-07, -1.00075, 0.752157, 4.18667, 2.00149),
@@ -166,7 +162,16 @@ shadow_mesh = SubResource("ArrayMesh_nw0m4")
 
 [node name="StaticBody3D" instance=ExtResource("1_jum8w")]
 
-[node name="bov4luz" type="MeshInstance3D" parent="." index="5"]
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43708, 1.21236)
+light_color = Color(1, 0.858824, 0.188235, 1)
+light_specular = 0.0
+omni_range = 0.937424
+
+[node name="Flower" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0831415)
+
+[node name="bov4luz" type="MeshInstance3D" parent="." index="6"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("ArrayMesh_i57ya")
+mesh = SubResource("ArrayMesh_sttwq")
 skeleton = NodePath("")

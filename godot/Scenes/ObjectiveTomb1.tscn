@@ -6,34 +6,31 @@
 [ext_resource type="Texture2D" uid="uid://csonkgpo8r14i" path="res://meshes/tomb/bovluz_Image_2.png" id="4_ufntf"]
 [ext_resource type="Texture2D" uid="uid://bni80tuxdxyh2" path="res://meshes/tomb/bovluz_bov3luz.png" id="5_83xa8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ut4d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5l0x"]
 resource_name = "bov2"
 cull_mode = 2
 albedo_texture = ExtResource("2_taq56")
-roughness = 0.5
 texture_filter = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3ldn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_focdt"]
 resource_name = "bov2tex"
 cull_mode = 2
 albedo_texture = ExtResource("3_q5xpn")
-roughness = 0.5
 texture_filter = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlo5n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkx7o"]
 resource_name = "bov2texb"
 cull_mode = 2
 albedo_texture = ExtResource("4_ufntf")
-roughness = 0.5
 texture_filter = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1x7k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tn7v"]
 resource_name = "bov2luz"
 shading_mode = 0
 albedo_texture = ExtResource("5_83xa8")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_qdyv3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_spkc5"]
 _surfaces = [{
 "aabb": AABB(2.66173e-06, 0.637235, -1.00075, 1.76746, 2.90247, 2.00149),
 "format": 34359742465,
@@ -78,7 +75,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ctak5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_y2p67"]
 resource_name = "bovluz_Cube_016"
 _surfaces = [{
 "aabb": AABB(2.66173e-06, 0.637235, -1.00075, 1.76746, 2.90247, 2.00149),
@@ -86,7 +83,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 138,
 "index_data": PackedByteArray("FwBJAEwAFQAEAEgAKgBYAB8ALQBfAFkABQBaAFUABgAiAFsAJAABABEAJABcAAEAEgAAAAMASgAPAAIAUwBPAB0AVABNAFAAHABRAB4AHABOAFEAGwBhAC8AGABSAGAAVgAKAAgADgBeACkADQBXAF0AMQB7AHkAMABjAHoAeABkADIAeABiAGQAFgA0AGcAFABLADMAKwBuAHEALAAgAG8AIQA+AHAABwA/ACMAJgA4AEMAJQATADcAEABmADYANQBlAA8AawA6AGgAbAA9ADsAPABpADkAPABtAGkAGQByAGoAGgAuAHMACwBAAAkAQQAnAEQAQgAMACgAfQB3AHQAfABGAHYARQB1AEcARQB+AHUA"),
-"material": SubResource("StandardMaterial3D_6ut4d"),
+"material": SubResource("StandardMaterial3D_f5l0x"),
 "name": "bov2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -98,7 +95,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 198,
 "index_data": PackedByteArray("BwAwADIABwAFADAAQgAuAJsAQwAxAC8ATQCUAEsATQAtAJQATACWAE4ATACVAJYAUACaAFQATwCXAJkASgAOADUASAAMAA0AZQA3AGEAZgCdADgAXwA5AFwAYAA2ADoAXQA9AGQAXgA7AD4AYwBBAAIAYgA8AEAAAAADAAYAAQA/AAQAEwAKAFkAEgBRAAkAMwBXAEcANAASAFgAEABpAFUADwBqAGgAUgCeAGcAUwCYAJ8AFQBsABEAFACgAGsAegCiAHcAegAWAKIAQwCjABcARACcAKQArwBuAKEArwB9AG4AfABwAG0AfAAgAHAAHwByAG8AHgB+AHEARQCwAAsARgClALEAjQCpALMAjgCJAKoAigB1AKsAiwAmAHYAJACsAHQAJQAnAK0AKQAZAK4AKAAbABgAHQB5ABoAHAB7AHgAhAAJAIEAgwBWAAgApwBbAIUApgBJAFoAIQArAI8AIgCCACwAqACSACoAqACGAJIAgAC0AHMAfwCMALIAhwCQAJMAiAAjAJEA"),
-"material": SubResource("StandardMaterial3D_h3ldn"),
+"material": SubResource("StandardMaterial3D_focdt"),
 "name": "bov2tex",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -111,7 +108,7 @@ _surfaces = [{
 "index_count": 234,
 "index_data": PackedByteArray("XACGAFUAWwCIAIUAKgACAC0AKwCCAAUAKQCEACwAKACAAIMAJgB/ACcAJQB3AH4AjwB1ACQAkACVAHgAVgB0AF4AVgBtAHQATwBwAFcATQBpAG8AHwBqAE4AHgBgAGYAAABiACAAAQAGAGUAjQAuADMAjgAwAC8AIgCHAF0AIgAIAIcAVACKAEwAUwCFAIkAUQALAFkAUgCaAAwAIwCnAAkAIwCiAKcAXwCWAJEAXgB0AJQAnwA2AJsAngCmADUAiwCdAEsAiwCjAJ0AWgChACEAWAAKAKAAMQCkAIwAMgA0AKUASQCYAFAASgCcAJkAtwAOABIAuQCzABAAvwAEAIEAwAANAAcAQQCBAH0AQQC/AIEAvQB8AHYAvABAAHsAyQB6AJcAyAC+AHkAOwByAGsAOgA+AHEANwBsAGgAOAA8AG4AqABnAGEAqAA5AGcAQwBkAAMAQgCpAGMAxQBEAMEAxgBIAEUAuwARAMIAuwC4ABEAsQATAA8AsgCtABQAsADPABYArgC0AM4APwCTAHMAPQDHAJIAzQAdANQAzAAYABwAwwDLANEAwwCsAMsAtgAaANAAtQC6ABkARwDTABsARgDEANIAqwAXAMoAqgCvABUA"),
 "lods": [0.000418481, PackedByteArray("SQCHAIUASQCFAIkA1gDVAIcA1gCHAEkASQCgANYASQAKAKAASQCYAAoASQCcAJgAKgACAC0AJwACACoAJAACACcAJADHAAIAjwDHACQAPQDHAI8APQCPAF4AvAACAMcAOgA9AF4AVgA6AF4ATQA6AFYATQBgADoAHgBgAE0ANwA6AGAAqAA3AGAAvABAAAIAQAC/AAIAvwANAAIAQgBiAAIAQgCpAGIAAAACAGIAAABiACAAjQAuADMAjQAwAC4AIwCnAAkAIwCiAKcAngA1AJsAngCmADUAiwCdAEsAiwCjAJ0AMQCkAIwAMQA0AKQAqgAOABEAqgATAA4A1wARANgA1wCqABEAqgDXABkAqgAZAM4AqgDOABUAqgAVAMoAxQBEAMEAxQBIAEQAzAAcANQAzAAYABwAwwDLANEAwwCsAMsARgDSABsARgDEANIA")],
-"material": SubResource("StandardMaterial3D_tlo5n"),
+"material": SubResource("StandardMaterial3D_bkx7o"),
 "name": "bov2texb",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -123,7 +120,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("DAAXAAIACwAaABYAAAAZAAcAAAAVABkABQAOAAkABQAYAA4ADQAPABQADQADAA8ABAATABAAAQAIABIABgAbABEABgAKABsA"),
-"material": SubResource("StandardMaterial3D_u1x7k"),
+"material": SubResource("StandardMaterial3D_7tn7v"),
 "name": "bov2luz",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -131,11 +128,20 @@ _surfaces = [{
 "vertex_data": PackedByteArray("uB0CTv9/NsC4HQJO/382wLgdAk7/fzbAuB0CTv9/NsC4HQJO/382wLgdmFr/fzfAuB2YWv9/N8C4HZha/382wLgdmFr/fzbA//////h/NsD/////+H82wLgdAAD/fzbAuB0AAP9/NsC4HQAA/382wHA7/////z6/AAACTgAANsAAAAJOAAA2wAAAmFoAAKEgAACYWgAANsAAAJhaAAA2wAAAAAAAADbAcDsCTv//NsBwOwJO//82wHA7Ak7//zbAcDuYWv//AABwO5ha//82wHA7AAD//zbAAAD//wAALsH/fwAA/38AAP9/AAD/fwAA/38AAId+7AKNfuwC/38AAP9/AADngHgA54BvAP9/AAD/fwAA/38AAAiABAD/fwAA/38AALh/mX//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD//8KA/38AAP9/AADSf1wA")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_qdyv3")
+shadow_mesh = SubResource("ArrayMesh_spkc5")
 
 [node name="StaticBody3D" instance=ExtResource("1_y1bdr")]
 
+[node name="OmniLight3D" parent="." index="1"]
+visible = false
+
+[node name="OmniLight3D2" parent="." index="2"]
+visible = false
+
+[node name="OmniLight3D3" parent="." index="3"]
+visible = false
+
 [node name="bov2luz" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("ArrayMesh_ctak5")
+mesh = SubResource("ArrayMesh_y2p67")
 skeleton = NodePath("")

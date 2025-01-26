@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://co6dwc04ngm21"
-path="res://.godot/imported/props.glb-f9170b6d7cfc31ab6bb6132b2662a709.scn"
+uid="uid://djfs7jdkv3p46"
+path="res://.godot/imported/luces.glb-8b65702fd62a4e1b55dd1d60490bfea8.scn"
 
 [deps]
 
-source_file="res://meshes/props.glb"
-dest_files=["res://.godot/imported/props.glb-f9170b6d7cfc31ab6bb6132b2662a709.scn"]
+source_file="res://meshes/props/luces.glb"
+dest_files=["res://.godot/imported/luces.glb-8b65702fd62a4e1b55dd1d60490bfea8.scn"]
 
 [params]
 

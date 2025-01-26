@@ -1,18 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://svglya4ctrq6"]
+[gd_scene load_steps=10 format=3 uid="uid://svglya4ctrq6"]
 
 [ext_resource type="Script" path="res://Scripts/chart/chart.gd" id="1_63dh6"]
 [ext_resource type="Script" path="res://Scripts/chart/area.gd" id="2_c0yo6"]
 [ext_resource type="Texture2D" uid="uid://bub34yok6w86b" path="res://textures/tick.png" id="2_ljyuf"]
-[ext_resource type="Texture2D" uid="uid://cam2j2rbjm8dq" path="res://meshes/props_mapareco.png" id="2_mlptx"]
+[ext_resource type="Texture2D" uid="uid://c851akrvntak2" path="res://meshes/props/props_mapareco.png" id="2_q4vay"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wceaa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii8c6"]
 resource_name = "mapa"
 cull_mode = 2
-albedo_texture = ExtResource("2_mlptx")
+albedo_texture = ExtResource("2_q4vay")
 roughness = 0.5
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vpugu"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ux5bw"]
 _surfaces = [{
 "aabb": AABB(-0.192112, 0, -0.192112, 0.384223, 1e-05, 0.384223),
 "format": 34896613377,
@@ -26,7 +26,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d32s0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yp7ke"]
 resource_name = "props_Plane_032"
 _surfaces = [{
 "aabb": AABB(-0.192112, 0, -0.192112, 0.384223, 1e-05, 0.384223),
@@ -34,7 +34,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
-"material": SubResource("StandardMaterial3D_wceaa"),
+"material": SubResource("StandardMaterial3D_ii8c6"),
 "name": "mapa",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -42,13 +42,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 255, 0, 0, 254, 255, 84, 213, 254, 255, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vpugu")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyv1u"]
-albedo_color = Color(0.65, 0.527908, 0.3315, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nlxef"]
-material = SubResource("StandardMaterial3D_iyv1u")
+shadow_mesh = SubResource("ArrayMesh_ux5bw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jchwl"]
 albedo_color = Color(0.61, 0.490237, 0.3782, 1)
@@ -60,16 +54,10 @@ size = Vector3(2, 0.001, 0.1)
 script = ExtResource("1_63dh6")
 
 [node name="mapamano" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.27299e-07, -4.37114e-08, -5.2, -5.2, 1.91069e-15, 2.27299e-07, 0, 1, -2.27299e-07, 0, -2.32831e-10, 2.32831e-10)
+transform = Transform3D(9.93556e-15, -4.37114e-08, -5.2, -5.2, -4.37114e-08, 0, -2.27299e-07, 1, -2.27299e-07, 0, 0, 0)
 layers = 524288
-mesh = SubResource("ArrayMesh_d32s0")
+mesh = SubResource("ArrayMesh_yp7ke")
 skeleton = NodePath("")
-
-[node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.0175, 0, 0, 0, -4.40938e-10, -2.0175, 0, 0.0100875, -8.81876e-08, 0, 0.00256977, -0.00256977)
-visible = false
-layers = 524288
-mesh = SubResource("BoxMesh_nlxef")
 
 [node name="Divider" type="Node3D" parent="."]
 visible = false

@@ -10,21 +10,18 @@
 resource_name = "bov3"
 cull_mode = 2
 albedo_texture = ExtResource("2_whafu")
-roughness = 0.5
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idvrb"]
 resource_name = "bov3tex"
 cull_mode = 2
 albedo_texture = ExtResource("3_i4gg3")
-roughness = 0.5
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqtrk"]
 resource_name = "bov3texb"
 cull_mode = 2
 albedo_texture = ExtResource("3_d51nr")
-roughness = 0.5
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5mep"]

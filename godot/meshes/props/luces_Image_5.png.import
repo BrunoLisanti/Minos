@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cam2j2rbjm8dq"
-path.s3tc="res://.godot/imported/props_mapareco.png-64db6008ede424b5957cba4b35fe6644.s3tc.ctex"
+uid="uid://vevjou6vekql"
+path.s3tc="res://.godot/imported/luces_Image_5.png-3083ad7fd62690d34ed8b1222287fb61.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b26e5c3c46bc48a7853672d5647e0b9d"
+"md5": "c49f22ac23a095a6e48f2190bda7bc32"
 }
 
 [deps]
 
-source_file="res://meshes/props_mapareco.png"
-dest_files=["res://.godot/imported/props_mapareco.png-64db6008ede424b5957cba4b35fe6644.s3tc.ctex"]
+source_file="res://meshes/props/luces_Image_5.png"
+dest_files=["res://.godot/imported/luces_Image_5.png-3083ad7fd62690d34ed8b1222287fb61.s3tc.ctex"]
 
 [params]
 
