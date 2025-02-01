@@ -16,7 +16,7 @@ var step_time: float = 0
 
 const max_lean_distance: float = .75
 
-const kbm := true
+#const kbm := true
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Vision/Camera
@@ -44,7 +44,7 @@ var current_area: int
 var detectable := true
 
 func _ready()->void:
-	if kbm: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	lean_raycast = RayCast3D.new()
 	lean_raycast.position = head.position
 	add_child(lean_raycast)
@@ -95,7 +95,7 @@ func _process(_delta):
 			print("player is ", ("not " if not detectable else ""), "detectable")
 
 func _input(event: InputEvent)->void:
-	if kbm and event is InputEventMouseMotion:
+	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * sensitivity)
 		head.rotate_x(-event.relative.y * sensitivity)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-40), deg_to_rad(60))
@@ -106,17 +106,17 @@ func _physics_process(delta):
 	var y_rotation := int(Input.get_axis("rotate_left", "rotate_right"))
 	rotate_y(y_rotation * turn_speed * delta)
 	
-	var x_direction := int(Input.get_axis("strafe_left", "strafe_right")) if kbm else 0
+	var x_direction := int(Input.get_axis("strafe_left", "strafe_right"))
 	var z_direction := int(Input.get_axis("forward", "backward"))
 	var direction := Vector3(x_direction, 0, z_direction).normalized()
 	
-	if kbm:
-		var lean_direction := int(Input.get_axis("lean_left","lean_right"))
-		lean_raycast.target_position = Vector3(lean_direction * (max_lean_distance + .5), 0, 0)
-		lean_raycast.force_raycast_update()
-		var lean_distance: float = max_lean_distance if !lean_raycast.is_colliding() else abs(to_local(lean_raycast.get_collision_point()).x) / 4
-		head.position.x = lerp(head.position.x, lean_distance * lean_direction, 8 * delta)
-		head.rotation.z = lerp(head.rotation.z, deg_to_rad(20) * (lean_distance / max_lean_distance) * -lean_direction, 8 * delta)
+
+	var lean_direction := int(Input.get_axis("lean_left","lean_right"))
+	lean_raycast.target_position = Vector3(lean_direction * (max_lean_distance + .5), 0, 0)
+	lean_raycast.force_raycast_update()
+	var lean_distance: float = max_lean_distance if !lean_raycast.is_colliding() else abs(to_local(lean_raycast.get_collision_point()).x) / 4
+	head.position.x = lerp(head.position.x, lean_distance * lean_direction, 8 * delta)
+	head.rotation.z = lerp(head.rotation.z, deg_to_rad(20) * (lean_distance / max_lean_distance) * -lean_direction, 8 * delta)
 	
 	var speed := SPEED if !carrying else SPEED / 1.5
 	speed = speed if direction.z <= 0 else speed / 2
@@ -138,6 +138,10 @@ func _physics_process(delta):
 	var bob := Vector3(cos(t_bob * BOB_FREQ / 1.8) * BOB_AMP_HORIZONTAL, sin(t_bob * BOB_FREQ) * BOB_AMP_VERTICAL, 0)
 	camera.transform.origin = bob if walking else lerp(camera.transform.origin, Vector3.ZERO, .1)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		$PauseMenu.pause()
+
 func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
 		if !body.active: return
@@ -145,3 +149,4 @@ func _on_interaction_area_body_entered(body: Node3D)->void:
 		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
 		if (area_cleared): chart.check(current_area)
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
+		

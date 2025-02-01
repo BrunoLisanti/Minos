@@ -1,14 +1,14 @@
 [gd_scene load_steps=83 format=4 uid="uid://b4rxnu6cms68h"]
 
-[ext_resource type="Texture2D" uid="uid://d2gxsrqxwuocu" path="res://meshes/floor/tilepiso_piso1.png" id="1_dtg5b"]
-[ext_resource type="Texture2D" uid="uid://bm0j0ynjojfo4" path="res://meshes/floor/tilepiso_piso2.png" id="2_180su"]
-[ext_resource type="Texture2D" uid="uid://2pbhi2oc2pya" path="res://meshes/floor/tilepiso_piso3.png" id="3_nx5q1"]
-[ext_resource type="Texture2D" uid="uid://b3d1btvjmadbk" path="res://meshes/floor/tilepiso_piso4.png" id="4_idxbg"]
-[ext_resource type="Texture2D" uid="uid://c60svathhjq0h" path="res://meshes/floor/tilepiso_piso5.png" id="5_j2vnk"]
-[ext_resource type="Texture2D" uid="uid://mpeu0d8mjv68" path="res://meshes/floor/tilepiso_conabaizq.png" id="6_2fa7q"]
-[ext_resource type="Texture2D" uid="uid://ddbpnm2pkgb14" path="res://meshes/floor/tilepiso_conaba.png" id="7_kf67k"]
-[ext_resource type="Texture2D" uid="uid://dpdyu2n8jb8pc" path="res://meshes/floor/tilepiso_conbase.png" id="8_23pqv"]
-[ext_resource type="Texture2D" uid="uid://xacc0j68qv0m" path="res://meshes/floor/tilepiso_cordonx.png" id="9_8mw5g"]
+[ext_resource type="Texture2D" uid="uid://c715edx8sbvvj" path="res://meshes/floor/tilepiso_piso1.png" id="1_dtg5b"]
+[ext_resource type="Texture2D" uid="uid://bs6nypklaxuej" path="res://meshes/floor/tilepiso_piso2.png" id="2_180su"]
+[ext_resource type="Texture2D" uid="uid://r0y2ixp6x2pr" path="res://meshes/floor/tilepiso_piso3.png" id="3_nx5q1"]
+[ext_resource type="Texture2D" uid="uid://b3oera4li6uqd" path="res://meshes/floor/tilepiso_piso4.png" id="4_idxbg"]
+[ext_resource type="Texture2D" uid="uid://cmpo8dirkur2" path="res://meshes/floor/tilepiso_piso5.png" id="5_j2vnk"]
+[ext_resource type="Texture2D" uid="uid://c5hvx6ic2aatl" path="res://meshes/floor/tilepiso_conabaizq.png" id="6_2fa7q"]
+[ext_resource type="Texture2D" uid="uid://dx4jcrdj63d1x" path="res://meshes/floor/tilepiso_conaba.png" id="7_kf67k"]
+[ext_resource type="Texture2D" uid="uid://b0kwxsvynqhf0" path="res://meshes/floor/tilepiso_conbase.png" id="8_23pqv"]
+[ext_resource type="Texture2D" uid="uid://cssaqd26eigdp" path="res://meshes/floor/tilepiso_cordonx.png" id="9_8mw5g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrxc6"]
 resource_name = "tilepiso"
@@ -1328,7 +1328,6 @@ shadow_mesh = SubResource("ArrayMesh_b6nre")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1355, 0, -0.436207)
 
 [node name="Piso" type="Node3D" parent="tilepiso"]
-visible = false
 
 [node name="piso" type="MeshInstance3D" parent="tilepiso/Piso"]
 mesh = SubResource("ArrayMesh_en66g")
@@ -1477,10 +1476,8 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_lukp4")
 
 [node name="Cordon" type="Node3D" parent="tilepiso"]
-visible = false
 
 [node name="Esquina" type="Node3D" parent="tilepiso/Cordon"]
-visible = false
 
 [node name="pisocordonesquina" type="MeshInstance3D" parent="tilepiso/Cordon/Esquina"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
@@ -1523,7 +1520,6 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_y3k3u")
 
 [node name="L" type="Node3D" parent="tilepiso/Cordon"]
-visible = false
 
 [node name="esquina3" type="MeshInstance3D" parent="tilepiso/Cordon/L"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2, 0, 0)
