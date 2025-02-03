@@ -51,10 +51,11 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Resume"
 
+[node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit
 "
-
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

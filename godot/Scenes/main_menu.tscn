@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://57rxwtxxbfkh"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_dbsbd"]
+[ext_resource type="PackedScene" uid="uid://5twoqippo3ge" path="res://Scenes/map3.tscn" id="2_o7kjt"]
+
+[sub_resource type="Environment" id="Environment_cjf5k"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.381703, 0.381703, 0.381703, 1)
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.15
+
+[sub_resource type="InputEventAction" id="InputEventAction_nqck7"]
+action = &"pause"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_1kuio"]
+events = [SubResource("InputEventAction_nqck7")]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_dbsbd")
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Map" parent="Background" instance=ExtResource("2_o7kjt")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.05016, 2.21264, 52.7922)
+fov = 50.8309
+size = 30.4885
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
+environment = SubResource("Environment_cjf5k")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -41.0
+offset_right = 106.0
+offset_bottom = 41.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_1kuio")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Start
+"
+
+[node name="Options" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_1kuio")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Options"
+
+[node name="Exit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit
+"
