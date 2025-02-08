@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://dli6ntsfs0ko2"]
+
+[ext_resource type="Script" path="res://Scripts/death_screen.gd" id="1_x43id"]
+[ext_resource type="PackedScene" uid="uid://5twoqippo3ge" path="res://Scenes/map3.tscn" id="2_6n5av"]
+
+[sub_resource type="Environment" id="Environment_mqvve"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.381703, 0.381703, 0.381703, 1)
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.15
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_x43id")
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Map" parent="Background" instance=ExtResource("2_6n5av")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -6.52298, 2.21264, -51.7358)
+fov = 50.8309
+size = 30.4885
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
+environment = SubResource("Environment_mqvve")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -50.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Estas muerto"
+
+[node name="Restart" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main menu"
+
+[node name="Exit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"

@@ -45,4 +45,4 @@ func _on_memory_timeout():
 	knows_your_position = false
 
 func _on_kill_area_body_entered(_body: Node3D) -> void: # Solo el jugador puede entrar en este Area3D por cómo tiene configurada la capa y máscara de colisión.
-	if prey.detectable: get_tree().reload_current_scene()
+	if prey.detectable: get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")

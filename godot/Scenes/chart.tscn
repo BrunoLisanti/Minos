@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" path="res://Scripts/chart/chart.gd" id="1_63dh6"]
 [ext_resource type="Script" path="res://Scripts/chart/area.gd" id="2_c0yo6"]
-[ext_resource type="Texture2D" uid="uid://bub34yok6w86b" path="res://textures/tick.png" id="2_ljyuf"]
-[ext_resource type="Texture2D" uid="uid://c851akrvntak2" path="res://meshes/props/props_mapareco.png" id="2_q4vay"]
+[ext_resource type="Texture2D" uid="uid://darnwjc436sft" path="res://textures/tick.png" id="2_ljyuf"]
+[ext_resource type="Texture2D" uid="uid://cmrs5xopdrv2o" path="res://meshes/props/props_MAPI.png" id="2_q4vay"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii8c6"]
 resource_name = "mapa"
 cull_mode = 2
 albedo_texture = ExtResource("2_q4vay")
 roughness = 0.5
+heightmap_enabled = true
+heightmap_scale = -10.579
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ux5bw"]
