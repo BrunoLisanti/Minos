@@ -2,7 +2,7 @@ extends Control
 
 const hints: Array = [
 	"Deliver all flowers to the lit mausoleums.",
-	"Check your location on the map by holding the [color=red]V[/color] key.",
+	"Check your location on the map by holding the [color=red]V[/color] key. Areas that you've completed will be crossed out.",
 	"You move slower while carrying the box. Drop it or pick it back up by using the [color=red]F[/color] key.",
 	"Stay hidden by peeking around corners using the [color=red]Q[/color] and [color=red]E[/color] keys.",
 	"You are more visible in open spaces. Use winding corridors to your advantage."
