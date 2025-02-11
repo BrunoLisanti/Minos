@@ -31,7 +31,7 @@ const max_lean_distance: float = .75
 
 @onready var movement_component: MovementComponent = $MovementComponent
 
-var carrying: bool = false
+var carrying: bool = true
 var box_drop_distance: float = 1
 
 @onready var viewmodel: Node3D = $Head/Viewmodel
@@ -43,13 +43,25 @@ var current_area: int
 
 var detectable := true
 
+var last_hint: int = 0
+
+func trigger_hint()->void:
+	$HintComponent.trigger(last_hint)
+	last_hint += 1
+
 func _ready()->void:
+	trigger_hint()
+	trigger_hint()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	lean_raycast = RayCast3D.new()
 	lean_raycast.position = head.position
 	add_child(lean_raycast)
+	box_viewmodel.visible = carrying
 
 func _process(_delta):
+	if last_hint < $HintComponent.hints.size() and $HintTimer.is_stopped() and $HintComponent.queue.size() == 0:
+		$HintTimer.start()
+	
 	viewmodel_camera.global_transform = camera.global_transform
 	viewmodel.position.y = viewmodel_y_origin + clamp(-head.rotation.x * .25, -1, .05)
 	
@@ -61,7 +73,6 @@ func _process(_delta):
 	chart.highlight(current_area)
 	
 	if Input.is_action_just_pressed("interact"):
-		
 		if !carrying:
 			for body in interaction_range.get_overlapping_bodies():
 				if (body.is_in_group("pickable") and body.is_on_floor()):
@@ -150,3 +161,5 @@ func _on_interaction_area_body_entered(body: Node3D)->void:
 		if (area_cleared): chart.check(current_area)
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
 		
+func _on_hint_timer_timeout()->void:
+	trigger_hint()
