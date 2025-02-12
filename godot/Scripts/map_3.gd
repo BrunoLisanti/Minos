@@ -1,11 +1,11 @@
 extends Node3D
 
-@onready var decoration: GridMap = $Decoration
+@onready var decoration: GridMap = $Lights
 
 func _ready() -> void:
 	var faro_simple: int =    decoration.mesh_library.find_item_by_name("faro")
-	var faro_doble: int =     decoration.mesh_library.find_item_by_name("faro_doble")
-	var faro_cuadruple: int = decoration.mesh_library.find_item_by_name("faro_cuadruple")
+	var faro_doble: int =     decoration.mesh_library.find_item_by_name("faro2")
+	var faro_cuadruple: int = decoration.mesh_library.find_item_by_name("faro3")
 	for cell in decoration.get_used_cells():
 		print(decoration.get_cell_item_orientation(cell))
 		var cell_item = decoration.get_cell_item(cell)
