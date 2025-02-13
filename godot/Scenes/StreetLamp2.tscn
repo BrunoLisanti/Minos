@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://d3gfvxijxpwc1"]
 
 [ext_resource type="PackedScene" uid="uid://coaxrj87hr0qb" path="res://Scenes/StreetLampBase.tscn" id="1_u2jhn"]
-[ext_resource type="Texture2D" uid="uid://dnn3fogvaiq30" path="res://meshes/props/luces_Image_5.png" id="3_yg331"]
-[ext_resource type="Texture2D" uid="uid://ctfa2t2uvqcec" path="res://meshes/props/luces_bov3luz.png" id="4_61ujw"]
+[ext_resource type="Texture2D" uid="uid://b1inbwdcy4mo4" path="res://meshes/props/luces_centered_Image_5.png" id="3_yg331"]
+[ext_resource type="Texture2D" uid="uid://bwy7bh5lndxpi" path="res://meshes/props/luces_centered_bov3luz.png" id="4_61ujw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdukv"]
 resource_name = "faro"

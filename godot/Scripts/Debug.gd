@@ -4,6 +4,10 @@ extends Node
 
 var buffer: Array[MeshInstance3D]
 
+func _ready() -> void:
+	if not OS.is_debug_build():
+		$Fps.visible = false
+
 func draw_path(path: PackedVector3Array, color := Color.WHITE_SMOKE)->void:
 	for mesh in buffer: # limpiar el dibujo anterior
 		if is_instance_valid(mesh):
@@ -42,3 +46,6 @@ func final_cleanup(mesh_instance: MeshInstance3D, persist_s: float):
 		mesh_instance.queue_free()
 	else:
 		return mesh_instance
+
+func _process(delta: float) -> void:
+	$Fps.text = str(Engine.get_frames_per_second())

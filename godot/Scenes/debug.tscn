@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl3hmoibbn0p8"]
+[gd_scene load_steps=2 format=3 uid="uid://cl3hmoibbn0p8"]
 
 [ext_resource type="Script" path="res://Scripts/Debug.gd" id="1_sevjb"]
-[ext_resource type="Script" path="res://Scripts/Fps.gd" id="2_dnwt2"]
 
 [node name="Debug" type="Node"]
 script = ExtResource("1_sevjb")
@@ -10,4 +9,3 @@ script = ExtResource("1_sevjb")
 offset_right = 165.0
 offset_bottom = 95.0
 text = "FPS"
-script = ExtResource("2_dnwt2")
