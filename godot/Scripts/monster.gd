@@ -3,10 +3,11 @@ extends CharacterBody3D
 const wander_speed: float = 3.8
 const chase_speed: float = 3.8
 const detection_radius: float = 20.0
+const danger_distance: float = detection_radius * 1.5 # A partir de qué distancia se empieza a escuchar el ruido
 const fov: float = 175
 var knows_your_position: bool = false
-const min_sound_distance: float = 18 # A partir de qué distancia se empieza a escuchar el ruido
-const max_sound_distance: float = 4 # Punto en el que el ruido es más fuerte
+const min_sound_distance: float = 18
+var encountered_player: bool = false
 
 var speed := wander_speed
 
@@ -14,6 +15,7 @@ var speed := wander_speed
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var pathfinding_component: PathfindingComponent = $PathfindingComponent
 @onready var danger: AudioStreamPlayer3D = $Danger
+@onready var hint_component: Node = get_parent().get_node("HintComponent")
 
 @export var navigation: NavigationRegion3D
 @export var prey: Node
@@ -22,7 +24,7 @@ var speed := wander_speed
 func _ready():
 	randomize()
 	pathfinding_component.init(navigation, debug)
-	danger.max_distance = detection_radius * 1.25
+	danger.max_distance = danger_distance
 
 func move_towards(where: Vector3, delta: float)->void:
 	movement_component.move(position.direction_to(where), speed, 8, false, delta)
@@ -46,3 +48,9 @@ func _on_memory_timeout():
 
 func _on_kill_area_body_entered(_body: Node3D) -> void: # Solo el jugador puede entrar en este Area3D por cómo tiene configurada la capa y máscara de colisión.
 	if prey.detectable: get_tree().call_deferred("change_scene_to_file", "res://Scenes/death_screen.tscn")
+
+func _process(_delta: float) -> void:
+	if not encountered_player and global_position.distance_to(prey.global_position) <= danger_distance:
+		hint_component.enqueue("Stay hidden by peeking around corners using the [color=red]Q[/color] and [color=red]E[/color] keys.")
+		hint_component.enqueue("You move slowly while carrying the box. Drop it or pick it back up by using the [color=red]F[/color] key.")
+		encountered_player = true

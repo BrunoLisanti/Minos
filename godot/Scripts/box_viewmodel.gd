@@ -15,6 +15,7 @@ func remove_flower(area: int)->bool:
 	if (group.get_child_count() == 0): return false
 	group.get_children()[0].queue_free()
 	remaining -= 1
+	$Removed.play()
 	return group.get_child_count() - 1 == 0 # Se resta 1 porque la cantidad de hijos no se actualiza hasta el final del frame
 
 func get_remaining()->int:

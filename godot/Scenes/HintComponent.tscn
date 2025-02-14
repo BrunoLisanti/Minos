@@ -25,10 +25,9 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "Test"
 fit_content = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Lifetime" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
 
@@ -36,4 +35,4 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_timer_timeout"]

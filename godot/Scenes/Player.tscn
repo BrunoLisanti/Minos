@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://clwd2pt32yncv"]
+[gd_scene load_steps=26 format=3 uid="uid://clwd2pt32yncv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3b6d0"]
 [ext_resource type="PackedScene" uid="uid://ragpw1u7o272" path="res://Scenes/SoundPool.tscn" id="3_5wyd6"]
@@ -22,7 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://c2u366qvrse6p" path="res://sound/player/footsteps/footstep-17.wav" id="20_otevg"]
 [ext_resource type="PackedScene" uid="uid://svglya4ctrq6" path="res://Scenes/chart.tscn" id="21_ufli1"]
 [ext_resource type="PackedScene" uid="uid://bnbqhd2d8gyp2" path="res://Scenes/pause_menu.tscn" id="22_3jt1a"]
-[ext_resource type="PackedScene" uid="uid://vvuuxuw8ugt0" path="res://Scenes/HintComponent.tscn" id="23_exv03"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mraqt"]
 
@@ -182,14 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62269e-07, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 shape = SubResource("BoxShape3D_gtlu7")
 
-[node name="HintComponent" parent="." instance=ExtResource("23_exv03")]
-
 [node name="PauseMenu" parent="." instance=ExtResource("22_3jt1a")]
-
-[node name="HintTimer" type="Timer" parent="."]
-wait_time = 15.0
-one_shot = true
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_body_detection"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
-[connection signal="timeout" from="HintTimer" to="." method="_on_hint_timer_timeout"]

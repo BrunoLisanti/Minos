@@ -5,12 +5,12 @@ resource_name = "Compressor"
 threshold = -11.6
 
 [resource]
-bus/0/volume_db = 1.45601
+bus/0/volume_db = 2.84476
 bus/1/name = &"Player Footsteps"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -3.54298
+bus/1/volume_db = -1.51925
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectCompressor_w4wf2")
 bus/1/effect/0/enabled = true
@@ -24,5 +24,5 @@ bus/3/name = &"Monster"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = -1.51925
+bus/3/volume_db = -1.12151
 bus/3/send = &"Master"
