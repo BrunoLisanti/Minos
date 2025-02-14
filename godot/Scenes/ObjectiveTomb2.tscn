@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dm5xs0didhus5"]
+[gd_scene load_steps=15 format=4 uid="uid://dm5xs0didhus5"]
 
 [ext_resource type="PackedScene" uid="uid://bbyxpbstn56c" path="res://Scenes/Objective.tscn" id="1_jum8w"]
 [ext_resource type="Texture2D" uid="uid://3jkvk7pigplf" path="res://meshes/tomb/bovluz_Image_8.png" id="2_rmsaj"]
@@ -160,6 +160,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nw0m4")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_52gbg"]
+size = Vector3(1.52258, 3.17334, 1.98938)
+
 [node name="StaticBody3D" instance=ExtResource("1_jum8w")]
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="." index="4"]
@@ -175,3 +178,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0831415)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sttwq")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bov4luz" index="0"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bov4luz/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76109, 1.57504, 6.10133e-05)
+shape = SubResource("BoxShape3D_52gbg")
