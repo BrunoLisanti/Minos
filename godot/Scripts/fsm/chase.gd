@@ -29,11 +29,8 @@ func physics_process(delta)->void:
 
 func check_conditions()->void:
 	if (monster.global_position.distance_to(monster.prey.global_position) <= monster.detection_radius / 2) or monster.can_see(player, player.head.position):
-		print("monster sees you")
 		monster.knows_your_position = true
 		memory.stop()
-	else:
-		print("monster doesn't see you")
 
 	if !monster.can_see(player, player.head.position) && monster.knows_your_position:
 		if memory.is_stopped():
