@@ -86,6 +86,13 @@ func _process(_delta):
 			utility.set_layer_recursively(dupe, 1) # Colocamos todos sus meshes en layer 1 para que no se vea a través de las paredes como el viewmodel
 			box_instance.model.queue_free()
 			box_instance.add_child(dupe)
+			
+			var beacon: OmniLight3D = OmniLight3D.new()
+			beacon.light_color = Color.WHITE
+			beacon.light_energy = .25
+			beacon.light_size = .2
+			box_instance.add_child(beacon)
+			
 			carrying = false
 			
 		box_viewmodel.visible = carrying

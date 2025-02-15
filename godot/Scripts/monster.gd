@@ -54,3 +54,6 @@ func _process(_delta: float) -> void:
 		hint_component.enqueue("Stay hidden by peeking around corners using the [color=red]Q[/color] and [color=red]E[/color] keys.")
 		hint_component.enqueue("You move slowly while carrying the box. Drop it or pick it back up by using the [color=red]F[/color] key.")
 		encountered_player = true
+
+func distance_to_player()->float:
+	return global_position.distance_to(prey.global_position)

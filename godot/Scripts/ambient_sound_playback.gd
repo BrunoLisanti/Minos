@@ -1,5 +1,8 @@
 extends Node3D
 
+const min_time: float = 80
+const max_time: float = 120
+
 @export var player: Node3D
 @export var monster: Node3D
 
@@ -20,5 +23,5 @@ func play_sound_near(pos: Vector3)->void:
 func _on_timer_timeout() -> void:
 	if (monster.get_node("FSM").state.name == "chase"): return
 	play_sound_near(player.global_position)
-	$Timer.wait_time = randi_range(80, 120)
+	$Timer.wait_time = randi_range(min_time, max_time)
 	$Timer.start()
