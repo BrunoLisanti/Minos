@@ -157,7 +157,7 @@ func _physics_process(delta):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		$PauseMenu.pause()
+		$CanvasLayer/PauseMenu.pause()
 
 func _on_interaction_area_body_entered(body: Node3D)->void:
 	if body.is_in_group("objective") && carrying:
