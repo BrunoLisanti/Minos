@@ -47,5 +47,5 @@ func final_cleanup(mesh_instance: MeshInstance3D, persist_s: float):
 	else:
 		return mesh_instance
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Fps.text = str(Engine.get_frames_per_second())

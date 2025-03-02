@@ -23,5 +23,5 @@ func play_sound_near(pos: Vector3)->void:
 func _on_timer_timeout() -> void:
 	if (monster.get_node("FSM").state.name == "chase"): return
 	play_sound_near(player.global_position)
-	$Timer.wait_time = randi_range(min_time, max_time)
+	$Timer.wait_time = randf_range(min_time, max_time)
 	$Timer.start()

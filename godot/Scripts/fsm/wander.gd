@@ -2,31 +2,35 @@ extends State
 
 #@onready var fsm: FSM = get_parent()
 
-const min_idle_time: float = 2
-const max_idle_time: float = 4
+var min_idle_time: float
+var max_idle_time: float
+const min_possible_idle_time: float = 3
+const max_possible_idle_time: float = 6
 const min_wander_time: float = 6
 const max_wander_time: float = 10
 const detection_window: float = .25 # tiempo en que tarda en detectar al jugador una vez que entra en su campo de visión
 const stalk_radius: float = 25 # radio alrededor del jugador en que busca el próximo punto a moverse
 
 var idle := true
-var behaviour_duration: float
+var current_behaviour_duration: float
 var time_behaving: float # tiempo que estuvo quieto o moviéndose
 var time_aware: float # tiempo que tuvo al jugador en su visión
 
 var monster: CharacterBody3D
 var player: CharacterBody3D
+
 func enter()->void:
 	monster = fsm.agent
 	player = monster.prey
 	monster.knows_your_position = false
-	behaviour_duration = randf_range(min_idle_time, max_idle_time)
 	time_behaving = 0
 	time_aware = 0
 	monster.speed = monster.wander_speed
+	update_behaviour_times()
+	current_behaviour_duration = randf_range(min_idle_time, max_idle_time)
 
 func physics_process(delta)->void:
-	if (time_behaving > behaviour_duration):
+	if time_behaving >= current_behaviour_duration:
 		change_behaviour(!idle)
 		
 	if !idle:
@@ -51,7 +55,11 @@ func check_conditions()->void:
 		fsm.change_state("Chase")
 
 func change_behaviour(loitering: bool)->void:
+	update_behaviour_times()
 	idle = loitering
-	behaviour_duration = randf_range(min_idle_time if idle else min_wander_time, max_idle_time if idle else max_wander_time)
+	current_behaviour_duration = randf_range(min_idle_time if idle else min_wander_time, max_idle_time if idle else max_wander_time)
 	time_behaving = 0
-	
+
+func update_behaviour_times()->void:
+	min_idle_time = lerp(3, 0, monster.aggression)
+	max_idle_time = lerp(6, 0, monster.aggression)

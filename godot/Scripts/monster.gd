@@ -8,6 +8,7 @@ const fov: float = 175
 var knows_your_position: bool = false
 const min_sound_distance: float = 18
 var encountered_player: bool = false
+var aggression: float = 0 # Valor en el rango [0, 1]
 
 var speed := wander_speed
 

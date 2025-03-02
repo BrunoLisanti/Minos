@@ -26,8 +26,9 @@ navigation_mesh = SubResource("NavigationMesh_hd052")
 
 [node name="Map" parent="NavigationRegion3D" instance=ExtResource("1_y27xq")]
 
-[node name="Player" parent="." instance=ExtResource("2_h5ha1")]
+[node name="Player" parent="." node_paths=PackedStringArray("monster") instance=ExtResource("2_h5ha1")]
 transform = Transform3D(1, 1.13133e-08, -1.78814e-07, -1.13133e-08, 1, 8.59333e-08, 1.78814e-07, -8.59334e-08, 1, 1.043, 1, 30.6644)
+monster = NodePath("../Monster")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999942, -0.00597998, -0.00893445, 0.010751, 0.556191, 0.830985, -1.11006e-08, -0.831033, 0.556223, 0, 0, 0)

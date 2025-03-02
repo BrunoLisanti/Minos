@@ -183,5 +183,6 @@ shape = SubResource("BoxShape3D_gtlu7")
 
 [node name="PauseMenu" parent="." instance=ExtResource("22_3jt1a")]
 
+[connection signal="flower_removed" from="Head/Viewmodel/BoxViewmodel" to="." method="_on_box_viewmodel_flower_removed"]
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_body_detection"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

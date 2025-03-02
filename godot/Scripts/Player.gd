@@ -45,6 +45,8 @@ var current_area: int
 
 var detectable := true
 
+@export var monster: Node3D
+
 func _ready()->void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	lean_raycast = RayCast3D.new()
@@ -83,6 +85,7 @@ func _process(_delta):
 			box_instance.rotation = rotation
 			
 			var dupe = box_viewmodel.model.duplicate() # Copiamos cómo se ve la caja actualmente
+			
 			utility.set_layer_recursively(dupe, 1) # Colocamos todos sus meshes en layer 1 para que no se vea a través de las paredes como el viewmodel
 			box_instance.model.queue_free()
 			box_instance.add_child(dupe)
@@ -91,6 +94,7 @@ func _process(_delta):
 			beacon.light_color = Color.WHITE
 			beacon.light_energy = .25
 			beacon.light_size = .2
+			beacon.position.y = .5
 			box_instance.add_child(beacon)
 			
 			carrying = false
@@ -162,3 +166,7 @@ func _on_interaction_area_body_entered(body: Node3D)->void:
 		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
 		if (area_cleared): chart.check(current_area)
 		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
+
+func _on_box_viewmodel_flower_removed()->void:
+	monster.aggression += 1.0/(box_viewmodel.slots - 1)
+	print("monster aggresion level is now ", monster.aggression)
