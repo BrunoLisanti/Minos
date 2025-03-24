@@ -18,6 +18,8 @@ var speed := wander_speed
 @onready var danger: AudioStreamPlayer3D = $Danger
 @onready var hint_component: Node = get_parent().get_node("HintComponent")
 
+@onready var billboard_material = $Billboard.mesh.material
+
 @export var navigation: NavigationRegion3D
 @export var prey: Node
 @export var debug: Node
@@ -33,6 +35,9 @@ func move_towards(where: Vector3, delta: float)->void:
 	# Mirar hacia esa dirección
 	var angle: float = Vector2(global_transform.origin.z, global_transform.origin.x).angle_to_point(Vector2(where.z, where.x))
 	set_rotation(Vector3(0, lerp_angle(get_rotation().y, angle, 2.2 * delta), 0))
+	
+	# La rotacion del billboard no está relacionada a la rotacion del nodo, sino que hay que modificar un parámetro del shader.
+	billboard_material.set_shader_parameter("y_angle", lerp_angle(get_rotation().y, angle, 2.2 * delta))
 
 func can_see(object: CollisionObject3D, offset: Vector3 = Vector3.ZERO)->bool:
 	var pointer := Vector3(object.global_position - global_position).normalized()

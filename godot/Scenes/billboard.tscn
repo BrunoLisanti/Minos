@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxv85hai3ndmq"]
+
+[ext_resource type="Shader" path="res://billboard.gdshader" id="1_hn3x1"]
+[ext_resource type="Texture2D" uid="uid://cqcapr7gi5mxb" path="res://textures/monstilowres.png" id="2_imjxj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1f3fu"]
+render_priority = 0
+shader = ExtResource("1_hn3x1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/directions_count = 8
+shader_parameter/frames_count = 1
+shader_parameter/frame = 1
+shader_parameter/y_angle = 0.0
+shader_parameter/starting_angle = -0.75
+shader_parameter/directions_on_horizontal_axis = true
+shader_parameter/clockwise = true
+shader_parameter/sprite_sheet = ExtResource("2_imjxj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o11ok"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("ShaderMaterial_1f3fu")
+size = Vector2(2, 3)
+
+[node name="Quad" type="MeshInstance3D"]
+transform = Transform3D(1.00423, 0, 0, 0, 1.00423, 0, 0, 0, 1.00423, 0, 0, 0)
+mesh = SubResource("QuadMesh_o11ok")

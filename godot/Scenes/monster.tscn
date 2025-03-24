@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://deex24tw48bch"]
+[gd_scene load_steps=15 format=3 uid="uid://deex24tw48bch"]
 
 [ext_resource type="Script" path="res://Scripts/monster.gd" id="1_0qnu6"]
 [ext_resource type="Script" path="res://Scripts/fsm/fsm.gd" id="2_7afyk"]
+[ext_resource type="PackedScene" uid="uid://bxv85hai3ndmq" path="res://Scenes/billboard.tscn" id="2_hxmj0"]
 [ext_resource type="Script" path="res://Scripts/fsm/wander.gd" id="3_1valx"]
 [ext_resource type="Script" path="res://Scripts/fsm/chase.gd" id="4_17ksi"]
 [ext_resource type="Script" path="res://Scripts/movement_component.gd" id="5_jbs1g"]
@@ -31,7 +32,12 @@ script = ExtResource("1_0qnu6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_xumfw")
 
+[node name="Billboard" parent="." instance=ExtResource("2_hxmj0")]
+transform = Transform3D(0.869689, 0, 0.502115, 0, 1.00423, 0, -0.502115, 0, 0.869689, 0, 1, 0)
+layers = 3
+
 [node name="Model" type="Node3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
