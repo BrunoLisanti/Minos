@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://5twoqippo3ge"]
 
 [ext_resource type="MeshLibrary" uid="uid://4jg34uirpv5g" path="res://tileset/floor.tres" id="1_bruwn"]
-[ext_resource type="Script" path="res://Scripts/map_3.gd" id="1_ghhmo"]
+[ext_resource type="Script" uid="uid://brf7fd5x8x5ib" path="res://Scripts/map_3.gd" id="1_ghhmo"]
 [ext_resource type="MeshLibrary" uid="uid://d1fb4fqw0mfdt" path="res://tileset/tombs.tres" id="2_1vaxq"]
 [ext_resource type="PackedScene" uid="uid://bf01w1qukawjc" path="res://Scenes/ObjectiveTomb1.tscn" id="3_0j7te"]
 [ext_resource type="PackedScene" uid="uid://b58kahd427lb6" path="res://Scenes/ObjectiveTomb3.tscn" id="4_f3whg"]

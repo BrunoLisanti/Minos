@@ -1,14 +1,14 @@
 [gd_scene load_steps=83 format=4 uid="uid://b4rxnu6cms68h"]
 
-[ext_resource type="Texture2D" uid="uid://c715edx8sbvvj" path="res://meshes/floor/tilepiso_piso1.png" id="1_dtg5b"]
-[ext_resource type="Texture2D" uid="uid://bs6nypklaxuej" path="res://meshes/floor/tilepiso_piso2.png" id="2_180su"]
-[ext_resource type="Texture2D" uid="uid://r0y2ixp6x2pr" path="res://meshes/floor/tilepiso_piso3.png" id="3_nx5q1"]
-[ext_resource type="Texture2D" uid="uid://b3oera4li6uqd" path="res://meshes/floor/tilepiso_piso4.png" id="4_idxbg"]
-[ext_resource type="Texture2D" uid="uid://cmpo8dirkur2" path="res://meshes/floor/tilepiso_piso5.png" id="5_j2vnk"]
-[ext_resource type="Texture2D" uid="uid://c5hvx6ic2aatl" path="res://meshes/floor/tilepiso_conabaizq.png" id="6_2fa7q"]
-[ext_resource type="Texture2D" uid="uid://dx4jcrdj63d1x" path="res://meshes/floor/tilepiso_conaba.png" id="7_kf67k"]
-[ext_resource type="Texture2D" uid="uid://b0kwxsvynqhf0" path="res://meshes/floor/tilepiso_conbase.png" id="8_23pqv"]
-[ext_resource type="Texture2D" uid="uid://cssaqd26eigdp" path="res://meshes/floor/tilepiso_cordonx.png" id="9_8mw5g"]
+[ext_resource type="Texture2D" uid="uid://ckbkj1ieervsu" path="res://meshes/floor/tilepiso_piso1.png" id="1_dtg5b"]
+[ext_resource type="Texture2D" uid="uid://pl0o1juy6bun" path="res://meshes/floor/tilepiso_piso2.png" id="2_180su"]
+[ext_resource type="Texture2D" uid="uid://ba50v2rjioyrq" path="res://meshes/floor/tilepiso_piso3.png" id="3_nx5q1"]
+[ext_resource type="Texture2D" uid="uid://dlxy8df1iw7de" path="res://meshes/floor/tilepiso_piso4.png" id="4_idxbg"]
+[ext_resource type="Texture2D" uid="uid://baaghvum8mg7x" path="res://meshes/floor/tilepiso_piso5.png" id="5_j2vnk"]
+[ext_resource type="Texture2D" uid="uid://bql02xbem15q7" path="res://meshes/floor/tilepiso_conabaizq.png" id="6_2fa7q"]
+[ext_resource type="Texture2D" uid="uid://bmm1elter46nk" path="res://meshes/floor/tilepiso_conaba.png" id="7_kf67k"]
+[ext_resource type="Texture2D" uid="uid://wyteq0lf5q1w" path="res://meshes/floor/tilepiso_conbase.png" id="8_23pqv"]
+[ext_resource type="Texture2D" uid="uid://quxjp5xlhg50" path="res://meshes/floor/tilepiso_cordonx.png" id="9_8mw5g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrxc6"]
 resource_name = "tilepiso"

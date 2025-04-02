@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5ojopm8l4be2"]
 
-[ext_resource type="PackedScene" uid="uid://dcac1v4t4ic1l" path="res://meshes/tomb/bovedas.glb" id="1_82bac"]
+[ext_resource type="PackedScene" uid="uid://ciyaghmepfmo4" path="res://meshes/tomb/bovedas.glb" id="1_82bac"]
 
 [node name="Node3D" type="Node3D"]
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://deex24tw48bch"]
 
-[ext_resource type="Script" path="res://Scripts/monster.gd" id="1_0qnu6"]
-[ext_resource type="Script" path="res://Scripts/fsm/fsm.gd" id="2_7afyk"]
+[ext_resource type="Script" uid="uid://1qeyca6o32p0" path="res://Scripts/monster.gd" id="1_0qnu6"]
+[ext_resource type="Script" uid="uid://duwdv0dkic2mb" path="res://Scripts/fsm/fsm.gd" id="2_7afyk"]
 [ext_resource type="PackedScene" uid="uid://bxv85hai3ndmq" path="res://Scenes/billboard.tscn" id="2_hxmj0"]
-[ext_resource type="Script" path="res://Scripts/fsm/wander.gd" id="3_1valx"]
-[ext_resource type="Script" path="res://Scripts/fsm/chase.gd" id="4_17ksi"]
-[ext_resource type="Script" path="res://Scripts/movement_component.gd" id="5_jbs1g"]
-[ext_resource type="Script" path="res://Scripts/pathfinding_component.gd" id="6_3qcos"]
+[ext_resource type="Script" uid="uid://s6oevu4lsu7l" path="res://Scripts/fsm/wander.gd" id="3_1valx"]
+[ext_resource type="Script" uid="uid://yw7y5d16j1ho" path="res://Scripts/fsm/chase.gd" id="4_17ksi"]
+[ext_resource type="Script" uid="uid://blxlrrc5yjoa4" path="res://Scripts/movement_component.gd" id="5_jbs1g"]
+[ext_resource type="Script" uid="uid://drd7skoic434u" path="res://Scripts/pathfinding_component.gd" id="6_3qcos"]
 [ext_resource type="AudioStream" uid="uid://ctpeoahh5w6sb" path="res://sound/monster/danger.wav" id="7_8tjap"]
 [ext_resource type="AudioStream" uid="uid://jhrsc00ghtoi" path="res://sound/monster/run.mp3" id="8_25pyv"]
 

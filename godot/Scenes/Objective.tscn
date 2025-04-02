@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=4 uid="uid://bbyxpbstn56c"]
 
-[ext_resource type="Script" path="res://Scripts/objective.gd" id="1_210nu"]
-[ext_resource type="Texture2D" uid="uid://q2hn7p6ydycv" path="res://meshes/props/props_Image_5.png" id="2_8isep"]
-[ext_resource type="Texture2D" uid="uid://ol3h64v27ont" path="res://meshes/props/props_petalpo.png" id="3_8qjwv"]
-[ext_resource type="Texture2D" uid="uid://cktklnsyslvtm" path="res://meshes/props/props_petalosroj.png" id="4_81gan"]
-[ext_resource type="Texture2D" uid="uid://cctedp5mtie4e" path="res://meshes/props/props_hojas.png" id="5_5ujvx"]
-[ext_resource type="Texture2D" uid="uid://c0vdwtor1wjij" path="res://meshes/props/props_petalosbl.png" id="6_gvqrj"]
+[ext_resource type="Script" uid="uid://b1qpj518gkr5f" path="res://Scripts/objective.gd" id="1_210nu"]
+[ext_resource type="Texture2D" uid="uid://bmyytj7vxm8lo" path="res://meshes/props/props_Image_5.png" id="2_8isep"]
+[ext_resource type="Texture2D" uid="uid://3spbnkcd0ak8" path="res://meshes/props/props_petalpo.png" id="3_8qjwv"]
+[ext_resource type="Texture2D" uid="uid://d0wwwud52o86n" path="res://meshes/props/props_petalosroj.png" id="4_81gan"]
+[ext_resource type="Texture2D" uid="uid://c3psmfxv172ad" path="res://meshes/props/props_hojas.png" id="5_5ujvx"]
+[ext_resource type="Texture2D" uid="uid://fhtum2v4yai2" path="res://meshes/props/props_petalosbl.png" id="6_gvqrj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3e4m"]
 size = Vector3(1, 2, 0.5)

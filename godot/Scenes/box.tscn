@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dg6nbktm8kp15"]
 
-[ext_resource type="Script" path="res://Scripts/box.gd" id="1_xevcj"]
+[ext_resource type="Script" uid="uid://cluj8lq3fe7vb" path="res://Scripts/box.gd" id="1_xevcj"]
 [ext_resource type="AudioStream" uid="uid://dyrx3o71hyitm" path="res://sound/box/box.wav" id="2_4dbp6"]
 [ext_resource type="PackedScene" uid="uid://d216wmmrnfbmh" path="res://Scenes/BoxModel.tscn" id="3_j3ku3"]
 

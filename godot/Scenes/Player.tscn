@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://clwd2pt32yncv"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3b6d0"]
+[ext_resource type="Script" uid="uid://gvgs8r4uf4ss" path="res://Scripts/Player.gd" id="1_3b6d0"]
 [ext_resource type="PackedScene" uid="uid://ragpw1u7o272" path="res://Scenes/SoundPool.tscn" id="3_5wyd6"]
 [ext_resource type="AudioStream" uid="uid://b334iymjefvjt" path="res://sound/player/footsteps/footstep-01.wav" id="4_cyjsu"]
 [ext_resource type="AudioStream" uid="uid://dhb2v0johtgrx" path="res://sound/player/footsteps/footstep-02.wav" id="5_ejcol"]
@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cojyybspgc7vo" path="res://sound/player/footsteps/footstep-14.wav" id="17_rv7eb"]
 [ext_resource type="AudioStream" uid="uid://bdt1y3jmcouwp" path="res://sound/player/footsteps/footstep-15.wav" id="18_pdj6d"]
 [ext_resource type="AudioStream" uid="uid://3smgdwu15dt8" path="res://sound/player/footsteps/footstep-16.wav" id="19_4pbte"]
-[ext_resource type="Script" path="res://Scripts/movement_component.gd" id="20_0lofs"]
+[ext_resource type="Script" uid="uid://blxlrrc5yjoa4" path="res://Scripts/movement_component.gd" id="20_0lofs"]
 [ext_resource type="PackedScene" uid="uid://dkrit1or0dx6l" path="res://Scenes/BoxViewmodel.tscn" id="20_nane8"]
 [ext_resource type="AudioStream" uid="uid://c2u366qvrse6p" path="res://sound/player/footsteps/footstep-17.wav" id="20_otevg"]
 [ext_resource type="PackedScene" uid="uid://svglya4ctrq6" path="res://Scenes/chart.tscn" id="21_ufli1"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkrit1or0dx6l"]
 
-[ext_resource type="Script" path="res://Scripts/box_viewmodel.gd" id="1_f2gmr"]
+[ext_resource type="Script" uid="uid://bf77prem1wc6k" path="res://Scripts/box_viewmodel.gd" id="1_f2gmr"]
 [ext_resource type="PackedScene" uid="uid://d216wmmrnfbmh" path="res://Scenes/BoxModel.tscn" id="2_ypxpr"]
-[ext_resource type="AudioStream" uid="uid://c6cj76xtu1ijc" path="res://sound/player/item.mp3" id="3_nkd8v"]
+[ext_resource type="AudioStream" uid="uid://dbglhoxrk25kh" path="res://sound/player/item.mp3" id="3_nkd8v"]
 
 [node name="BoxViewmodel" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0114119, 0, -0.00380394)
