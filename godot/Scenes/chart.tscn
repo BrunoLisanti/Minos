@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/chart/chart.gd" id="1_63dh6"]
 [ext_resource type="Script" path="res://Scripts/chart/area.gd" id="2_c0yo6"]
 [ext_resource type="Texture2D" uid="uid://darnwjc436sft" path="res://textures/tick.png" id="2_ljyuf"]
-[ext_resource type="Texture2D" uid="uid://f14g3771hjii" path="res://meshes/props/props_MAPI.png" id="2_q4vay"]
+[ext_resource type="Texture2D" uid="uid://cp3wdfl707ecr" path="res://meshes/props/props_MAPI.png" id="2_q4vay"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii8c6"]
 resource_name = "mapa"

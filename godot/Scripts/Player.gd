@@ -120,13 +120,9 @@ func _input(event: InputEvent)->void:
 func _physics_process(delta):
 	chart.position.y = lerp(chart.position.y, -1.0 if !Input.is_action_pressed("open_map") else 0.0, 20 * delta)
 	
-	var y_rotation := int(Input.get_axis("rotate_left", "rotate_right"))
-	rotate_y(y_rotation * turn_speed * delta)
-	
 	var x_direction := int(Input.get_axis("strafe_left", "strafe_right"))
 	var z_direction := int(Input.get_axis("forward", "backward"))
 	var direction := Vector3(x_direction, 0, z_direction).normalized()
-	
 
 	var lean_direction := int(Input.get_axis("lean_left","lean_right"))
 	lean_raycast.target_position = Vector3(lean_direction * (max_lean_distance + .5), 0, 0)
