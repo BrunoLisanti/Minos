@@ -59,7 +59,7 @@ func _ready()->void:
 	hint_component.enqueue("Check your location on the map by holding the [color=red]V[/color] key. Areas that you've completed will be crossed out.")
 
 func _process(_delta):
-	viewmodel_camera.global_transform = camera.global_transform
+	viewmodel_camera.global_transform = head.global_transform
 	viewmodel.position.y = viewmodel_y_origin + clamp(-head.rotation.x * .25, -1, .05)
 	
 	if global_position.z > 0:
@@ -129,7 +129,7 @@ func _physics_process(delta):
 	lean_raycast.force_raycast_update()
 	var lean_distance: float = max_lean_distance if !lean_raycast.is_colliding() else abs(to_local(lean_raycast.get_collision_point()).x) / 4
 	head.position.x = lerp(head.position.x, lean_distance * lean_direction, 8 * delta)
-	head.rotation.z = lerp(head.rotation.z, deg_to_rad(20) * (lean_distance / max_lean_distance) * -lean_direction, 8 * delta)
+	camera.rotation.z = lerp(camera.rotation.z, deg_to_rad(20) * (lean_distance / max_lean_distance) * -lean_direction, 8 * delta)
 	
 	var speed := SPEED if !carrying else SPEED / 1.5
 	speed = speed if direction.z <= 0 else speed / 2
@@ -150,6 +150,7 @@ func _physics_process(delta):
 	t_bob += speed * delta # Acumulador de tiempo usado como oscilador, y teniendo en cuenta la velocidad (?)
 	var bob := Vector3(cos(t_bob * BOB_FREQ / 1.8) * BOB_AMP_HORIZONTAL, sin(t_bob * BOB_FREQ) * BOB_AMP_VERTICAL, 0)
 	camera.transform.origin = bob if walking else lerp(camera.transform.origin, Vector3.ZERO, .1)
+	box_viewmodel.transform.origin = bob if walking else lerp(box_viewmodel.transform.origin, Vector3.ZERO, .1)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
