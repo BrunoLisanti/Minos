@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://svglya4ctrq6"]
+[gd_scene load_steps=14 format=3 uid="uid://svglya4ctrq6"]
 
 [ext_resource type="Script" path="res://Scripts/chart/chart.gd" id="1_63dh6"]
 [ext_resource type="Script" path="res://Scripts/chart/area.gd" id="2_c0yo6"]
 [ext_resource type="Texture2D" uid="uid://darnwjc436sft" path="res://textures/tick.png" id="2_ljyuf"]
-[ext_resource type="Texture2D" uid="uid://cp3wdfl707ecr" path="res://meshes/props/props_MAPI.png" id="2_q4vay"]
+[ext_resource type="Texture2D" uid="uid://bykfi1ny0h4x4" path="res://meshes/props/props_MAPI.png" id="2_q4vay"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii8c6"]
 resource_name = "mapa"
@@ -51,6 +51,19 @@ albedo_color = Color(0.61, 0.490237, 0.3782, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vmmkg"]
 size = Vector3(2, 0.001, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3es6b"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v302h"]
+material = SubResource("StandardMaterial3D_3es6b")
+height = 0.077
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uydvp"]
+albedo_color = Color(0.0718092, 0.221777, 0.179156, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ar1xw"]
+material = SubResource("StandardMaterial3D_uydvp")
+size = Vector3(0.1, 0.9, 0.1)
 
 [node name="Chart" type="Node3D"]
 script = ExtResource("1_63dh6")
@@ -151,3 +164,15 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, 0.5, -0.5, 0.006)
 visible = false
 layers = 524288
 texture = ExtResource("2_ljyuf")
+
+[node name="Brujula" type="Node3D" parent="."]
+transform = Transform3D(0.28, -8.74227e-09, -2.44784e-08, -2.44784e-08, 4.37114e-09, -0.28, 2.44784e-08, 0.1, 1.22392e-08, 0, -0.784755, 0.00169513)
+
+[node name="Cuerpo" type="MeshInstance3D" parent="Brujula"]
+layers = 524288
+mesh = SubResource("CylinderMesh_v302h")
+
+[node name="Aguja" type="MeshInstance3D" parent="Brujula"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 524288
+mesh = SubResource("PrismMesh_ar1xw")

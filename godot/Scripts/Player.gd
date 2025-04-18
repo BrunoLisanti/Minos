@@ -121,6 +121,8 @@ func _input(event: InputEvent)->void:
 
 func _physics_process(delta):
 	chart.position.y = lerp(chart.position.y, -1.0 if !Input.is_action_pressed("open_map") else 0.0, 20 * delta)
+	#brujula.position.y = lerp(brujula.position.y, -1.0 if !Input.is_action_pressed("open_map") else -0.17, 20 * delta)
+	chart.rotate_needle_to(-rotation.y, delta)
 	
 	var x_direction := int(Input.get_axis("strafe_left", "strafe_right"))
 	var z_direction := int(Input.get_axis("forward", "backward"))

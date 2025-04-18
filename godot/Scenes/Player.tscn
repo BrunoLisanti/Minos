@@ -54,7 +54,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.415, -0.572)
 
 [node name="BoxViewmodel" parent="Head/Viewmodel" instance=ExtResource("20_nane8")]
 transform = Transform3D(0.9, 1.00356e-08, -3.71056e-10, -1.00356e-08, 0.897543, -0.0664627, -3.7106e-10, 0.0664627, 0.897543, 0, -0.000365853, 0)
-visible = false
 
 [node name="ChartAnchor" type="Node3D" parent="Head/Viewmodel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.098, 0.329399, 0.229)
