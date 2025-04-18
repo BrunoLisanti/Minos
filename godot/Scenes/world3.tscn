@@ -31,7 +31,7 @@ transform = Transform3D(1, 1.13133e-08, -1.78814e-07, -1.13133e-08, 1, 8.59333e-
 monster = NodePath("../Monster")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.999942, -0.00597998, -0.00893445, 0.010751, 0.556191, 0.830985, -1.11006e-08, -0.831033, 0.556223, 0, 0, 0)
+transform = Transform3D(0.89816, 0.35992, -0.25252, 0.010751, 0.556191, 0.830985, 0.439538, -0.749072, 0.495679, 0, 0, 0)
 visible = false
 
 [node name="Debug" parent="." instance=ExtResource("6_jcjxk")]

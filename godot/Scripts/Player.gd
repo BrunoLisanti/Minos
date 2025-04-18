@@ -110,6 +110,8 @@ func _process(_delta):
 		elif Input.is_action_just_pressed("debug_action_3"):
 			detectable = not detectable
 			print("player is ", ("not " if not detectable else ""), "detectable")
+		elif Input.is_action_just_pressed("debug_action_4"):
+			update_objectives()
 
 func _input(event: InputEvent)->void:
 	if event is InputEventMouseMotion:
@@ -157,13 +159,26 @@ func _unhandled_input(event: InputEvent) -> void:
 		$CanvasLayer/PauseMenu.pause()
 
 func _on_interaction_area_body_entered(body: Node3D)->void:
-	if body.is_in_group("objective") && carrying:
+	if body.is_in_group("objective") && carrying && box_viewmodel.get_remaining() > 0:
 		if !body.active: return
 		body.use()
-		var area_cleared: bool = box_viewmodel.remove_flower(current_area)
-		if (area_cleared): chart.check(current_area)
-		if (box_viewmodel.get_remaining() == 0): get_tree().reload_current_scene()
+		update_objectives()
 
 func _on_box_viewmodel_flower_removed()->void:
 	monster.aggression += 1.0/(box_viewmodel.slots - 1)
 	print("monster aggresion level is now ", monster.aggression)
+
+func update_objectives():
+	var area_cleared: bool = box_viewmodel.remove_flower(current_area)
+	if (area_cleared): chart.check(current_area)
+	if (box_viewmodel.get_remaining() == 0):
+		# Fin del juego
+		var environment: Environment = get_parent().get_node("WorldEnvironment").environment
+		environment.background_color = Color.LIGHT_SKY_BLUE
+		environment.ambient_light_color = Color.FLORAL_WHITE
+		environment.fog_enabled = false
+		get_parent().get_node("DirectionalLight3D").visible = true
+		
+		monster.queue_free()
+		get_parent().get_node("AmbientSoundPlayback").queue_free()
+		#get_tree().reload_current_scene()
