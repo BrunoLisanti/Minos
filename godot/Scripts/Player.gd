@@ -44,6 +44,7 @@ var lean_raycast: RayCast3D
 var current_area: int
 
 var detectable := true
+var cheating_needle := false
 
 @export var monster: Node3D
 
@@ -92,8 +93,8 @@ func _process(_delta):
 			
 			var beacon: OmniLight3D = OmniLight3D.new()
 			beacon.light_color = Color.WHITE
-			beacon.light_energy = .25
-			beacon.light_size = .2
+			beacon.light_energy = .10
+			beacon.light_size = .1
 			beacon.position.y = .5
 			box_instance.add_child(beacon)
 			
@@ -112,6 +113,8 @@ func _process(_delta):
 			print("player is ", ("not " if not detectable else ""), "detectable")
 		elif Input.is_action_just_pressed("debug_action_4"):
 			update_objectives()
+		elif Input.is_action_just_pressed("debug_action_5"):
+			cheating_needle = not cheating_needle
 
 func _input(event: InputEvent)->void:
 	if event is InputEventMouseMotion:
@@ -122,7 +125,13 @@ func _input(event: InputEvent)->void:
 func _physics_process(delta):
 	chart.position.y = lerp(chart.position.y, -1.0 if !Input.is_action_pressed("open_map") else 0.0, 20 * delta)
 	#brujula.position.y = lerp(brujula.position.y, -1.0 if !Input.is_action_pressed("open_map") else -0.17, 20 * delta)
-	chart.rotate_needle_to(-rotation.y, delta)
+	if not cheating_needle:
+		chart.rotate_needle_to(-rotation.y, delta)
+	else:
+		var closest_objective: Node3D = utility.get_closest(get_tree(), global_position, "objective")
+		if closest_objective != null:
+			var direction: Vector3 = global_position.direction_to(closest_objective.global_position).rotated(Vector3.UP, -rotation.y)
+			chart.rotate_needle_to(atan2(direction.x, direction.z), delta)
 	
 	var x_direction := int(Input.get_axis("strafe_left", "strafe_right"))
 	var z_direction := int(Input.get_axis("forward", "backward"))
