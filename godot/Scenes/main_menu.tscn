@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://57rxwtxxbfkh"]
+[gd_scene load_steps=7 format=3 uid="uid://57rxwtxxbfkh"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_dbsbd"]
 [ext_resource type="PackedScene" uid="uid://5twoqippo3ge" path="res://Scenes/map3.tscn" id="2_o7kjt"]
+[ext_resource type="PackedScene" uid="uid://nqxfus0eii8p" path="res://Scenes/options_modal.tscn" id="3_v3dct"]
 
 [sub_resource type="Environment" id="Environment_cjf5k"]
 background_mode = 1
@@ -96,3 +97,10 @@ blisanti (github.com/brunolisanti/)
 Art by Juanchi"
 horizontal_alignment = 2
 autowrap_mode = 2
+
+[node name="Options" parent="." instance=ExtResource("3_v3dct")]
+visible = false
+offset_left = 129.0
+offset_top = 178.0
+offset_right = 129.16
+offset_bottom = 103.84

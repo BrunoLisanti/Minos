@@ -13,6 +13,6 @@ func start() -> void:
 	get_tree().change_scene_to_file("res://Scenes/world3.tscn")
 
 func options() -> void:
-	print("Options")
+	$Options.visible = !$Options.visible
 
 	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnbqhd2d8gyp2"]
+[gd_scene load_steps=9 format=3 uid="uid://bnbqhd2d8gyp2"]
 
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_gosil"]
 [ext_resource type="Shader" path="res://pause_menu.gdshader" id="1_iox33"]
+[ext_resource type="PackedScene" uid="uid://nqxfus0eii8p" path="res://Scenes/options_modal.tscn" id="3_7iebn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_on3hi"]
 shader = ExtResource("1_iox33")
@@ -71,6 +72,10 @@ text = "Resume"
 layout_mode = 2
 text = "Main Menu"
 
+[node name="Options" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit
@@ -100,3 +105,13 @@ Mouse - Look around
 "
 label_settings = SubResource("LabelSettings_xfu4h")
 horizontal_alignment = 1
+
+[node name="Options" parent="." instance=ExtResource("3_7iebn")]
+visible = false
+layout_mode = 1
+offset_left = 73.0
+offset_top = 179.0
+offset_right = 73.16
+offset_bottom = 104.84
+
+[connection signal="button_up" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_button_up"]

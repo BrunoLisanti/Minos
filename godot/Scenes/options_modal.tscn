@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://nqxfus0eii8p"]
+
+[ext_resource type="Script" path="res://Scripts/options_modal.gd" id="1_g07c5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.281
+anchor_bottom = 0.417
+offset_right = 0.159988
+offset_bottom = -74.16
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g07c5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 126.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mouse sensitivity"
+
+[node name="Sensitivity" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 0.15
+max_value = 2.0
+step = 0.001
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="Volume" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]

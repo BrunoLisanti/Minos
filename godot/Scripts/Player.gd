@@ -5,6 +5,7 @@ const SPEED := 4.0
 const sensitivity: float = 0.003
 const turn_speed: float = 2.2
 var speed_multiplier := 1.0
+var sensitivity_multiplier := 1.0
 
 # Head bobbing
 const BOB_FREQ := 3.4
@@ -55,6 +56,7 @@ func _ready()->void:
 	lean_raycast.position = head.position
 	add_child(lean_raycast)
 	box_viewmodel.visible = carrying
+	sensitivity_multiplier = $CanvasLayer/PauseMenu/Options.sensitivity_slider.value
 	
 	await get_tree().create_timer(4).timeout
 	hint_component.enqueue("Deliver all flowers to the lit mausoleums.")
@@ -121,8 +123,8 @@ func _process(_delta):
 
 func _input(event: InputEvent)->void:
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * sensitivity)
-		head.rotate_x(-event.relative.y * sensitivity)
+		rotate_y(-event.relative.x * sensitivity * sensitivity_multiplier)
+		head.rotate_x(-event.relative.y * sensitivity * sensitivity_multiplier)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 func _physics_process(delta):
