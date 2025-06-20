@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvje7gm26g2rp"]
+
+[ext_resource type="Script" path="res://Scripts/end_popup.gd" id="1_y7y2e"]
+
+[node name="EndPopup" type="ColorRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_y7y2e")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 170.0
+offset_top = 31.0
+offset_right = 470.0
+offset_bottom = 429.0
+pivot_offset = Vector2(150, 0)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 291.0
+text = "Congratulations! You have delivered all flowers to their tombs. 
+
+The spirits rest at ease for another day. Birds chirp as a gentle breeze caresses and warm sunbeams lay upon your face.
+
+The necropolis nods off into the day as the city of the living begins to awake."
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 310.0
+offset_right = 217.0
+offset_bottom = 389.0
+
+[node name="Continue" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Linger"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Exit
+"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

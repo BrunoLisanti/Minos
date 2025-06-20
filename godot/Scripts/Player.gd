@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED := 4.0
 const sensitivity: float = 0.003
 const turn_speed: float = 2.2
+var speed_multiplier := 1.0
 
 # Head bobbing
 const BOB_FREQ := 3.4
@@ -16,7 +17,7 @@ var step_time: float = 0
 
 const max_lean_distance: float = .75
 
-#const kbm := true
+var can_pause := true
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Vision/Camera
@@ -115,6 +116,8 @@ func _process(_delta):
 			update_objectives()
 		elif Input.is_action_just_pressed("debug_action_5"):
 			cheating_needle = not cheating_needle
+		elif Input.is_action_just_pressed("debug_action_6"):
+			speed_multiplier = 1.0 if speed_multiplier > 1.0 else 3.0
 
 func _input(event: InputEvent)->void:
 	if event is InputEventMouseMotion:
@@ -144,7 +147,7 @@ func _physics_process(delta):
 	head.position.x = lerp(head.position.x, lean_distance * lean_direction, 8 * delta)
 	camera.rotation.z = lerp(camera.rotation.z, deg_to_rad(20) * (lean_distance / max_lean_distance) * -lean_direction, 8 * delta)
 	
-	var speed := SPEED if !carrying else SPEED / 1.5
+	var speed := (SPEED if !carrying else SPEED / 1.5) * speed_multiplier
 	speed = speed if direction.z <= 0 else speed / 2
 	
 	var hovering := not is_on_floor()
@@ -166,7 +169,7 @@ func _physics_process(delta):
 	box_viewmodel.transform.origin = bob if walking else lerp(box_viewmodel.transform.origin, Vector3.ZERO, .1)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if can_pause and event.is_action_pressed("pause"):
 		$CanvasLayer/PauseMenu.pause()
 
 func _on_interaction_area_body_entered(body: Node3D)->void:
@@ -192,4 +195,6 @@ func update_objectives():
 		
 		monster.queue_free()
 		get_parent().get_node("AmbientSoundPlayback").queue_free()
-		#get_tree().reload_current_scene()
+		
+		await get_tree().create_timer(5).timeout
+		$CanvasLayer/EndPopup.enable()

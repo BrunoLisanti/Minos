@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://clwd2pt32yncv"]
+[gd_scene load_steps=27 format=3 uid="uid://clwd2pt32yncv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3b6d0"]
 [ext_resource type="PackedScene" uid="uid://ragpw1u7o272" path="res://Scenes/SoundPool.tscn" id="3_5wyd6"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://c2u366qvrse6p" path="res://sound/player/footsteps/footstep-17.wav" id="20_otevg"]
 [ext_resource type="PackedScene" uid="uid://svglya4ctrq6" path="res://Scenes/chart.tscn" id="21_ufli1"]
 [ext_resource type="PackedScene" uid="uid://bnbqhd2d8gyp2" path="res://Scenes/pause_menu.tscn" id="22_3jt1a"]
+[ext_resource type="PackedScene" uid="uid://cvje7gm26g2rp" path="res://Scenes/end_popup.tscn" id="23_r04tr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mraqt"]
 
@@ -183,6 +184,9 @@ shape = SubResource("BoxShape3D_gtlu7")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("22_3jt1a")]
+
+[node name="EndPopup" parent="CanvasLayer" instance=ExtResource("23_r04tr")]
+visible = false
 
 [connection signal="flower_removed" from="Head/Viewmodel/BoxViewmodel" to="." method="_on_box_viewmodel_flower_removed"]
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_body_detection"]
