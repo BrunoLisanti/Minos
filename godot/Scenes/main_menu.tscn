@@ -84,3 +84,15 @@ text = "Options"
 layout_mode = 2
 text = "Exit
 "
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 340.0
+offset_top = 372.0
+offset_right = 633.0
+offset_bottom = 473.0
+text = "Programming by: 
+wsilla (wsilla.itch.io) 
+blisanti (github.com/brunolisanti/)
+Art by Juanchi"
+horizontal_alignment = 2
+autowrap_mode = 2
