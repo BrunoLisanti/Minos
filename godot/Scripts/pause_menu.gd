@@ -6,6 +6,7 @@ extends ColorRect
 @onready var options_btn: Button = find_child("Options")
 
 func _ready() -> void:
+	
 	hide()
 	resume_btn.pressed.connect(unpause)
 	quit_btn.pressed.connect(get_tree().quit)
@@ -13,6 +14,9 @@ func _ready() -> void:
 	options_btn.pressed.connect(options)
 
 func main_menu():
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+	hide()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
