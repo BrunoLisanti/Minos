@@ -21,4 +21,5 @@ func check(area: int)->void:
 	areas[area].check.visible = true
 
 func rotate_needle_to(deg: float, delta: float) -> void:
-	aguja.set_rotation(Vector3(aguja.rotation.x, deg, aguja.rotation.z))
+	#Le sumo pi porque originalmente la aguja está invertida, PI es 180 grados en radianes
+	aguja.set_rotation(Vector3(aguja.rotation.x, deg + PI, aguja.rotation.z))
