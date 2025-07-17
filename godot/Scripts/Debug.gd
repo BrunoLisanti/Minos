@@ -5,8 +5,7 @@ extends Node
 var buffer: Array[MeshInstance3D]
 
 func _ready() -> void:
-	if not OS.is_debug_build():
-		$Fps.visible = false
+	$Fps.visible = OS.is_debug_build()
 
 func draw_path(path: PackedVector3Array, color := Color.WHITE_SMOKE)->void:
 	for mesh in buffer: # limpiar el dibujo anterior
