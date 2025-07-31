@@ -59,7 +59,7 @@ func _ready()->void:
 	sensitivity_multiplier = $CanvasLayer/PauseMenu/Options.sensitivity_slider.value
 	
 	await get_tree().create_timer(4).timeout
-	hint_component.enqueue("Deliver all flowers to the lit mausoleums.")
+	hint_component.enqueue("Deliver all flowers to the lit mausoleums. Move with WASD and use the mouse to look around.")
 	hint_component.enqueue("Check your location on the map by holding the [color=red]V[/color] key. Areas that you've completed will be crossed out.")
 
 func _process(_delta):
