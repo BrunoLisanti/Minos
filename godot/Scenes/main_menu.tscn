@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_dbsbd"]
 [ext_resource type="PackedScene" uid="uid://5twoqippo3ge" path="res://Scenes/map3.tscn" id="2_o7kjt"]
 [ext_resource type="PackedScene" uid="uid://nqxfus0eii8p" path="res://Scenes/options_modal.tscn" id="3_v3dct"]
-[ext_resource type="Texture2D" uid="uid://dmby5acl20tp" path="res://textures/sepulcrum.png" id="4_ki7cb"]
+[ext_resource type="Texture2D" uid="uid://d0st06sglxm54" path="res://textures/sepulcrum.png" id="4_ki7cb"]
 
 [sub_resource type="Environment" id="Environment_cjf5k"]
 background_mode = 1
@@ -110,3 +110,10 @@ offset_bottom = 103.84
 texture_filter = 1
 position = Vector2(407, 103)
 texture = ExtResource("4_ki7cb")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 442.0
+offset_right = 173.0
+offset_bottom = 465.0
+text = "https://wsilla.itch.io"
