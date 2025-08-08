@@ -182,7 +182,7 @@ func _on_interaction_area_body_entered(body: Node3D)->void:
 
 func _on_box_viewmodel_flower_removed()->void:
 	monster.aggression += 1.0/(box_viewmodel.slots - 1)
-	print("monster aggresion level is now ", monster.aggression)
+	#print("monster aggresion level is now ", monster.aggression)
 
 func update_objectives():
 	var area_cleared: bool = box_viewmodel.remove_flower(current_area)

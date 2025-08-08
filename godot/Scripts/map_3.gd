@@ -7,7 +7,7 @@ func _ready() -> void:
 	var faro_doble: int =     decoration.mesh_library.find_item_by_name("faro2")
 	var faro_cuadruple: int = decoration.mesh_library.find_item_by_name("faro3")
 	for cell in decoration.get_used_cells():
-		print(decoration.get_cell_item_orientation(cell))
+		#print(decoration.get_cell_item_orientation(cell))
 		var cell_item = decoration.get_cell_item(cell)
 		match cell_item:
 			faro_simple:

@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 		play_sound_near(player.global_position)
 
 func play_sound_at(pos: Vector3)->void:
-	print("* playing event sound at\n\tx=", int(pos.x), ", z=", int(pos.z), "\nplayer at\n\tx=", int(player.global_position.x), ", z=", int(player.global_position.z))
+	#print("* playing event sound at\n\tx=", int(pos.x), ", z=", int(pos.z), "\nplayer at\n\tx=", int(player.global_position.x), ", z=", int(player.global_position.z))
 	sound_pool.relocate(pos)
 	sound_pool.play()
 	

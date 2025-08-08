@@ -8,7 +8,7 @@ var target: Vector3
 @onready var run: AudioStreamPlayer = $"../../Run"
 
 func enter()->void:
-	print("Entered chase")
+	#print("Entered chase")
 	monster = fsm.agent
 	player = monster.prey
 	memory = monster.get_node("Memory")
